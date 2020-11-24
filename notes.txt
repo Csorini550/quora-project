@@ -1,0 +1,135 @@
+
+
+
+
+
+'/'
+
+    *Nav bar
+        *(logo),Home, Following, Answer, Spaces, Notifications, Search bar
+    * post to feed
+        * comment on post
+        * rank post
+        *repost somones post
+    * textarea to ask/create question
+
+        
+     *tags
+
+      *BONUS side panel with other tags
+
+
+
+
+/Following
+    * textarea to ask/create question
+
+    * post to feed
+        * comment on post
+        * rank post
+        * repost a post
+     
+
+     *BONUS side panel with other tags
+
+/Answer
+    *A question that you click on to take you to a new page
+    *A follow button
+    *An answer button
+    *"Pass" button - ability to hide the question form your page (maybe bonus?)
+
+    *BONUS side panel to add in text to be added to question form
+
+/Notifications
+
+    notifies you when:
+        *upvote
+        *friend request
+        *comment
+        *answer question
+    
+    *BONUS filter side panel
+
+
+ 
+
+
+
+
+
+
+
+
+
+Bonus
+* With css make a selection of categories to pick from when creating an account to populate feed
+
+
+
+*Answer opens a new page in browser
+    *When you follow a question it populates following page
+    
+    
+    * for kicks elite user status
+
+    Stories:
+    Navbar:
+    As a user, I want to click home so that I can see all my relevent questions and posts
+
+    As a user, I want to click following so that I can see the posts of the people im following
+
+    As a user, I want to click answer so that i can see questions that need answers
+
+    As a user, I want to click spaces so that i can see different spaces in can participate in
+
+    As a user, I want to click notifications so that i can see messages, questions, answers, friend requests
+
+    As a user, I want to search so that i can find all the relevent posts on a topic
+    
+    As a user, I want to post to my feed, so that all my followers can see what im interested in / so i can organize the information i find interesting
+
+    As a user, I want to comment on a post so that i can let others know my opinion
+
+    As a user, I want to rank a post so that i can show that i find the information valuable
+
+    As a user, I want to repost someone elses post so i can show my followers what else im interested in
+    
+    As a user, I want to ask a question so that i can find an answer
+    
+    As a user, I want to tag a post so that i can organize it
+
+    Following:
+     As a user, I want to tag a post so that i can organize it
+     
+     As a user, I want to comment on a post so that i can let others know my opinion
+
+     As a user, I want to rank a post so that i can show that i find the information valuable
+
+     As a user, I want to repost someone elses post so i can show my followers what else im interested in
+    
+     As a user, I want to ask a question so that i can find an answer
+     
+
+    
+    Answer
+    As a user, I want to click answer so that i can see questions that need answers
+    
+    As a user, I want to be able to post an answer to a question, so that I can express my thoughts on the question
+    
+    As a user, I want to be able to follow a question/answer to be continually updated on the status
+
+    As a user, I want to be able to Pass on a question/answer so that I no longer see that question/answer
+
+
+
+    Notifications
+    As a user, I want to be notified when someone upvotes my question, so I can keep track of the status
+
+    As a user, I want to be notified when someone has requested to follow me, so that I can follow them back
+
+    As a user, I want to be notified when someone comments on a question/answer of mine so that I can see the response and/or respond back or like
+
+    As a user, I want to be notified when someone answers my question of mine so that I can see the response and/or respond back or like
+
+
+
