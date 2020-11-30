@@ -2,55 +2,102 @@ User Auth
 
 
 Will the user enter a username or an email address to login?
-User will login via email and password
+    User will login via email and password
+
 What routes should we use for login?
-User will login via /login route
+    User will login via /login route
+
 Where should the user be redirected after login?
-User will be redirected to the / homepage
-    ?Will we allow OAuth authentication via a third party?
-    ?Not yet -- maybe in a future story
+    User will be redirected to the / homepage
+    
 What happens if the user doesn't exist yet?
-Display the message Invalid Login please try again.
+    Display the message Invalid Login please try again.
+
 What happens if the user enters the wrong password?
-Display the message Invalid Login please try again.
-    ?Should this story include allowing a user to reset their password?
-    ?Not yet -- maybe in a future story
-?Should logging in use session-based or use token-based authentication?
-?We will use token-based auth for now
+    Display the message Invalid Login please try again.
+
+
+
+Login
+As a logged-out existing user, what happens if I enter the wrong usernmae/password?
+    Receive error message
+
+
+
+
+Signup
+How long can a username be?
+    10 chars
+
+How long can a password be?
+    7-15 chars
+
+Should the password contain special characters, numbers, caplitalization?
+    yes, one special character and caplitalization
+
+Given I'm a user who has not signed up yet, and when I'm on /signup
+    Then there will be a signup form with email, username, password fields and signup button
+
+When I try to fill out the form with email/username that already exists
+    Then at the top of the form you will see a red message alerting that email/username already exists
+    10 chars: username
+
+When I try to fill out the form with a username that is shorter than allowed
+    Then at the top of the form you will see a red message alerting that username is not long enough
+
+When I try to fill out the form with valid credientials (login or signup)
+    Redirect to homepage
+
+
+
+
+Demo User
+As a first time user I want to be able to demo the site without entering personal credentials
+    Demo User button provided to browse the website with full capabilities of answering and asking
+
+
+
+
+Create Questions
+
+
 
 
 
 Question
+As a logged in user, should we remain logged in if/when we refresh the page?
+    yes
+
 Can an unautorized user ask a question?
-no
+    no
 
 Can an unautorized user respond to a question 
-no
+    no
 
 What happens when a logged in user askes a question?
-the question will be posted on route /Questions and on their home page
+    the question will be posted on route /Questions and on their home page
 
 Can a logged in user ask a question on home and question page
-yes
+    yes
 
 BONUS
 Can a looged in user post a link on home and question page
-yes
+    yes
 
 Can a logged in user upvote a question
-no
+    no
 
 Can a logged in user downvote a question
-yes
+    yes
 
 Can  a logged in user upvote/downvote an answer
-yes
+    yes
 
 How long can a question be?
-100 char
+    100 char
 
 How long can answer be?
-500 char
+    00 char
 
 when a question is loaded so are all of the attached answers
 
@@ -59,17 +106,20 @@ when a question is loaded so are all of the attached answers
 
 
 
-
-
-
 Answers/comments on answers
-Where will answers be posted?
+As a logged in user, I want to click answer so that i can see questions that needs an answer
+    
+As a logged in user, I want to be able to post an answer to a question, so that I can express my thoughts on the question
+    
+
+
+As a logged in user, I want to be able to Pass on a question/answer so that I no longer see that question/answer
 
 BONUS
 How long can answer be?
-500 char
+    500 char
 How long can answer be?
-500 char
+    500 char
 
 
 
@@ -79,16 +129,16 @@ Search Questions
 How does our search work
 
 can a logged in user search a answer
-no
+    no
 
 can a user search for a question
-yes
+    yes
 
 Will the search search the entire question?
-yes
+    yes
 
 Can a logged in user click on another user who answered a question to see his/her profile?
-maybe 
+    maybe 
 
 Search bar grays out entire page when clicked on
 BONUS
@@ -104,3 +154,27 @@ Can a user change /add picture
 can a user create / change a bio
 Share 
 copy link
+
+
+
+GET /login
+POST /login
+
+GET /signup
+POST /signup
+
+GET /
+POST /
+
+GET /questions
+POST /questions
+GET /questions/:id
+GET /questions/:id/edit
+POST /question/:id/delete
+
+GET /answers
+POST /answers
+GET /answers/:id
+POST /answers/:id
+GET /answers/:id/edit
+POST /answers/:id/delete
