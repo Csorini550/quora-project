@@ -1,0 +1,106 @@
+User Auth
+
+
+Will the user enter a username or an email address to login?
+User will login via email and password
+What routes should we use for login?
+User will login via /login route
+Where should the user be redirected after login?
+User will be redirected to the / homepage
+    ?Will we allow OAuth authentication via a third party?
+    ?Not yet -- maybe in a future story
+What happens if the user doesn't exist yet?
+Display the message Invalid Login please try again.
+What happens if the user enters the wrong password?
+Display the message Invalid Login please try again.
+    ?Should this story include allowing a user to reset their password?
+    ?Not yet -- maybe in a future story
+?Should logging in use session-based or use token-based authentication?
+?We will use token-based auth for now
+
+
+
+Question
+Can an unautorized user ask a question?
+no
+
+Can an unautorized user respond to a question 
+no
+
+What happens when a logged in user askes a question?
+the question will be posted on route /Questions and on their home page
+
+Can a logged in user ask a question on home and question page
+yes
+
+BONUS
+Can a looged in user post a link on home and question page
+yes
+
+Can a logged in user upvote a question
+no
+
+Can a logged in user downvote a question
+yes
+
+Can  a logged in user upvote/downvote an answer
+yes
+
+How long can a question be?
+100 char
+
+How long can answer be?
+500 char
+
+when a question is loaded so are all of the attached answers
+
+
+
+
+
+
+
+
+
+Answers/comments on answers
+Where will answers be posted?
+
+BONUS
+How long can answer be?
+500 char
+How long can answer be?
+500 char
+
+
+
+
+Search Questions
+
+How does our search work
+
+can a logged in user search a answer
+no
+
+can a user search for a question
+yes
+
+Will the search search the entire question?
+yes
+
+Can a logged in user click on another user who answered a question to see his/her profile?
+maybe 
+
+Search bar grays out entire page when clicked on
+BONUS
+Answers displayed under question ranked by highest amount of upvotes (only one per question shown in search)
+
+
+
+
+BOnus mabybe
+User
+Can a user change password /email
+Can a user change /add picture
+can a user create / change a bio
+Share 
+copy link

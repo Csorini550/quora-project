@@ -1,15 +1,11 @@
 
-
-
-
-
 '/'
 
     *Nav bar
         *(logo),Home, Following, Answer, Spaces, Notifications, Search bar
     * post to feed
-        * comment on post
-        * rank post
+        * comment on question
+        * rank question
         *repost somones post
     * textarea to ask/create question
 
@@ -17,6 +13,8 @@
      *tags
 
       *BONUS side panel with other tags
+
+
 
 
 
@@ -71,65 +69,76 @@ Bonus
     
     
     * for kicks elite user status
+//// before user is logged in Stories
+
+    As an unauthorized user, I want to be able to login to the website via a form, so that I can access my private information.
+        *log in with username or email
+
+
 
     Stories:
     Navbar:
-    As a user, I want to click home so that I can see all my relevent questions and posts
+    As a logged in user, I want to click home so that I can see all my relevent questions and posts
+        *Has to be logged in
+        *Users log in via /login
+        *Once they log in they willbe redirected to home/feed
 
-    As a user, I want to click following so that I can see the posts of the people im following
 
-    As a user, I want to click answer so that i can see questions that need answers
 
-    As a user, I want to click spaces so that i can see different spaces in can participate in
+    As a logged in user, I want to click following so that I can see the posts of the people im following
 
-    As a user, I want to click notifications so that i can see messages, questions, answers, friend requests
+    As a logged in user, I want to click answer so that i can see questions that need answers
 
-    As a user, I want to search so that i can find all the relevent posts on a topic
+    As a logged in user, I want to click spaces so that i can see different spaces in can participate in
+
+    As a logged in user, I want to click notifications so that i can see messages, questions, answers, friend requests
+
+    As a logged in user, I want to search so that i can find all the relevent posts on a topic
     
-    As a user, I want to post to my feed, so that all my followers can see what im interested in / so i can organize the information i find interesting
+    As a logged in user, I want to post to my feed, so that all my followers can see what im interested in / so i can organize the information i find interesting
 
-    As a user, I want to comment on a post so that i can let others know my opinion
+    As a logged in user, I want to comment on a post so that i can let others know my opinion
 
-    As a user, I want to rank a post so that i can show that i find the information valuable
+    As a logged in user, I want to rank a post so that i can show that i find the information valuable
 
-    As a user, I want to repost someone elses post so i can show my followers what else im interested in
+    As a logged in user, I want to repost someone elses post so i can show my followers what else im interested in
     
-    As a user, I want to ask a question so that i can find an answer
+    As a logged in user, I want to ask a question so that i can find an answer
     
-    As a user, I want to tag a post so that i can organize it
+    As a logged in user, I want to tag a post so that i can organize it
 
     Following:
-     As a user, I want to tag a post so that i can organize it
+     As a logged in user, I want to tag a post so that i can organize it
      
-     As a user, I want to comment on a post so that i can let others know my opinion
+     As a logged in user, I want to comment on a post so that i can let others know my opinion
 
-     As a user, I want to rank a post so that i can show that i find the information valuable
+     As a logged in user, I want to rank a post so that i can show that i find the information valuable
 
-     As a user, I want to repost someone elses post so i can show my followers what else im interested in
+     As a logged in user, I want to repost someone elses post so i can show my followers what else im interested in
     
-     As a user, I want to ask a question so that i can find an answer
+     As a logged in user, I want to ask a question so that i can find an answer
      
 
     
     Answer
-    As a user, I want to click answer so that i can see questions that need answers
+    As a logged in user, I want to click answer so that i can see questions that need answers
     
-    As a user, I want to be able to post an answer to a question, so that I can express my thoughts on the question
+    As a logged in user, I want to be able to post an answer to a question, so that I can express my thoughts on the question
     
-    As a user, I want to be able to follow a question/answer to be continually updated on the status
+    As a logged in user, I want to be able to follow a question/answer to be continually updated on the status
 
-    As a user, I want to be able to Pass on a question/answer so that I no longer see that question/answer
+    As a logged in user, I want to be able to Pass on a question/answer so that I no longer see that question/answer
 
 
 
     Notifications
-    As a user, I want to be notified when someone upvotes my question, so I can keep track of the status
+    As a logged in user, I want to be notified when someone upvotes my question, so I can keep track of the status
 
-    As a user, I want to be notified when someone has requested to follow me, so that I can follow them back
+    As a logged in user, I want to be notified when someone has requested to follow me, so that I can follow them back
 
-    As a user, I want to be notified when someone comments on a question/answer of mine so that I can see the response and/or respond back or like
+    As a logged in user, I want to be notified when someone comments on a question/answer of mine so that I can see the response and/or respond back or like
 
-    As a user, I want to be notified when someone answers my question of mine so that I can see the response and/or respond back or like
+    As a logged in user, I want to be notified when someone answers my question of mine so that I can see the response and/or respond back or like
 
 
 
