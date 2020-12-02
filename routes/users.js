@@ -14,16 +14,16 @@ const router = express.Router();
 //******************************************************
 
 const userValidators = [
-  check("username")
+  check("firstName")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for Username")
+    .withMessage("Please provide a value for First Name")
     .isLength({ max: 50 })
-    .withMessage("Username must not be more than 50 characters long"),
-  // check("lastName")
-  //   .exists({ checkFalsy: true })
-  //   .withMessage("Please provide a value for Last Name")
-  //   .isLength({ max: 50 })
-  //   .withMessage("Last Name must not be more than 50 characters long"),
+    .withMessage("First Name must not be more than 50 characters long"),
+  check("lastName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Last Name")
+    .isLength({ max: 50 })
+    .withMessage("Last Name must not be more than 50 characters long"),
   check("emailAddress")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address")
@@ -73,7 +73,7 @@ const loginValidators = [
     .withMessage("Please provide a value for Password"),
 ];
 
-//******************************************************
+//************ Routes **********************************
 //******************** User Registration ***************
 //******************************************************
 
@@ -237,7 +237,7 @@ router.post(
 );
 
 //******************************************************
-//******************** User Login **********************
+//******************** User Logout *********************
 //******************************************************
 
 router.post("/logout", (req, res, next) => {
