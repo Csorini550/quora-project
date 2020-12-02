@@ -1,0 +1,18 @@
+
+doctype html
+html
+  head
+      block head
+        <script src="https://kit.fontawesome.com/6e38a041a3.js" crossorigin="anonymous"></script>
+        title="Express Starter App"
+        link(rel='stylesheet' href='/stylesheets/navbar.css')
+  body
+    nav(class='nav')
+      img(src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Kevin_Federline.jpg" class='navbar-logo')
+      a(href='/')
+        i(class="fas fa-home")
+      a(href='/users/question') 
+        i(class="far fa-question-circle")
+      a(href='/users/answer')
+        i(class="fas fa-book")
+      input.search(type='text' name='search' placeholder='Search for a question!')
