@@ -2,17 +2,20 @@ extends layout.pug
 
 include utils.pug
 
+append head
+    link(rel="stylesheet" href="/stylesheets/user-register.css")
+
 block content
     +validationErrorSummary(errors)
     form(action='/user-register' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('First Name', 'firstName', user.firstName)
-        +field('Last Name', 'lastName', user.lastName)
-        +field('Email Address', 'email', user.emailAddress)
-        +field('Password', 'password', user.password, 'password')
-        +field('Confirm Password', 'confirmPassword', '', 'password')
+        +field('Create Account', 'firstName', user.firstName, 'text', 'First Name')
+        +field(null, 'lastName', user.lastName, 'text', 'Last Name')
+        +field(null, 'email', user.emailAddress, 'email', 'Email')
+        +field(null, 'password', user.password, 'password', 'Password')
+        +field(null, 'confirmPassword', '', 'password', 'Confirm Password')
         div()
-        button(type='submit' ) Register
+        button(type='submit' id="register" ) Register
         a(href='/' ) Cancel
-    div
+    div(id='existing-user')
         p: a(href='/login') Already have an account?
