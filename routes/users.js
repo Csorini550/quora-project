@@ -173,14 +173,17 @@ router.post(
 // }));
 
 //******************************************************
-//******************** User Registration ***************
+//******************** User Login **********************
 //******************************************************
 
 router.get("/login", csrfProtection, (req, res) => {
-  res.render("login", {
-    title: "Login",
-    csrfToken: req.csrfToken(),
-  });
+  if (!res.locals.authenticated) {
+    res.render("login", {
+      csrfToken: req.csrfToken(),
+    });
+  } else {
+    res.redirect("/");
+  }
 });
 
 router.post(
@@ -189,7 +192,9 @@ router.post(
   loginValidators,
   asyncHandler(async (req, res) => {
     const { emailAddress, password } = req.body;
+
     let errors = [];
+
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
       // Attempt to get the user by their email address.
@@ -205,7 +210,15 @@ router.post(
           // If the password hashes match, then login the user
           // and redirect them to the default route.
           loginUser(req, res, user);
-          return res.redirect("/");
+          return res.session.save((err) => {
+            if (!err) {
+              console.log("no error");
+              return res.redirect("/");
+            } else {
+              console.log(err);
+              next(err);
+            }
+          });
         }
       }
       // Otherwise display an error message to the user.
@@ -222,7 +235,10 @@ router.post(
   })
 );
 
-// Logout user, redirect to home
+//******************************************************
+//******************** User Login **********************
+//******************************************************
+
 router.post("/logout", (req, res) => {
   logoutUser(req, res);
   res.redirect("/login");
