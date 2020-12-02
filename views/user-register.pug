@@ -7,7 +7,7 @@ append head
 
 block content
     +validationErrorSummary(errors)
-    form(action='/user-register' method='post')
+    form(action='/users/register' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Create Account', 'firstName', user.firstName, 'text', 'First Name')
         +field(null, 'lastName', user.lastName, 'text', 'Last Name')
@@ -18,4 +18,4 @@ block content
         button(type='submit' id="register" ) Register
         a(href='/' ) Cancel
     div(id='existing-user')
-        p: a(href='/login') Already have an account?
+        p: a(href='/users/login') Already have an account?
