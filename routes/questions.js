@@ -137,7 +137,7 @@ router.post("/:id", csrfProtection, questionValidators, asyncHandler( async (req
 
 
 //******************************************************
-//******************** Get Answer for Question *********
+//************* Get Answer for Question ****************
 
 router.get("/:id(\\d+)/answers/new", csrfProtection, asyncHandler(async (req, res) => {
     if(res.locals.authenticated) {
@@ -153,3 +153,49 @@ router.get("/:id(\\d+)/answers/new", csrfProtection, asyncHandler(async (req, re
 })
 );
 
+//******************************************************
+//************* Create Answer for Question ****************
+
+router.post("/:id(\\d+)/answers", csrfProtection, answerValidators, asyncHandler(async (req, res, next) => {
+    const questionId = parseInt(req.params.id, 10);
+    const { value } = req.body;
+    const userId = res.locals.user.id;
+
+    const answer = db.Answer.build({
+        value,
+        userId,
+        questionId,
+    });
+    
+    const validationErrors = validationResult(req);
+    try {
+      if (validationErrors.isEmpty()) {
+        await answer.save();
+        res.redirect(`/questions/${questionId}`);
+      } else {
+        const errors = validationErrors.array().map((error) => error.msg);
+        res.render("new-answer", {
+            value,
+            errors,
+            question,
+            csrfToken: req.csrfToken(),
+        });
+      }
+    } catch(err) {
+        if(
+            err.name === "SequelizeValidationError" ||
+            err.name === "SequelizeUniqueContraintError"
+        ) {
+            const errors = err.error.map((error) => error.message);
+            res.render("new-answer", {
+                title: "New Answer",
+                question,
+                errors,
+                csrfToken: req.csrfToken();
+            });
+        } else {
+            next(err);
+        }
+    }
+
+}));
