@@ -239,9 +239,30 @@ router.post(
 //******************** User Login **********************
 //******************************************************
 
-router.post("/logout", (req, res) => {
-  logoutUser(req, res);
-  res.redirect("/login");
+router.post("/logout", (req, res, next) => {
+  logoutUser(req);
+  return req.session.save((err) => {
+    if (!err) {
+      return res.redirect("/");
+    } else {
+      next(err);
+    }
+  });
 });
+
+//******************************************************
+//******************** Demo User ***********************
+//******************************************************
+
+router.get(
+  "/demo",
+  asyncHandler(async (req, res, next) => {
+    const demoUser = await db.User.findOne({
+      where: { emailAddress: "demo@demo.com" },
+    });
+    loginUser(req, res, demoUser);
+    return res.redirect("/");
+  })
+);
 
 module.exports = router;
