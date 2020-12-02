@@ -3,8 +3,18 @@ const { check, validationResult } = require("express-validator");
 
 const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
+const { ConnectionTimedOutError } = require("sequelize/types");
 
 const router = express.Router();
+
+//******************************************************
+//******************** HELPERS *********************
+    const questionNotFoundError = (id) => {
+        const err = Error(`Question iwth id of ${id} could not be found.`);
+        err.title = "Question not found":
+        err.status = 404;
+        return err;
+    };
 
 //******************************************************
 //******************** VALIDATIONS *********************
@@ -93,3 +103,53 @@ router.post(
     }
   })
 );
+
+//******************************************************
+//******************** Edit Question ********************
+
+router.get("/:id/edit",csrfProtection,asyncHandler(async (req, res) => {
+    const questionId = parseInt(req.params.id, 10);
+    const question = await db.Question.findByPk(questionId);
+    if(res.locals.authenticated) {
+        res.render("edit-question", {
+            question,
+            csrfToken: req.csrfToken(),
+        });
+    }else {
+        res.redirect("/login");
+    }
+}));
+
+router.post("/:id", csrfProtection, questionValidators, asyncHandler( async (req, res, next) => {
+    const { value } = req.body;
+    const userId = res.locals.user.id;
+    const questionId = parseInt(req.params.id,10);
+
+    const question = await db.Question(findByPk(questionId));
+    if(question) {
+        await question.update({ value: value});
+        res.redirect(`/questions/${question.id}`);
+    } else {
+        next(questionNotFoundError(questionId));
+    }
+}))
+
+
+
+//******************************************************
+//******************** Get Answer for Question *********
+
+router.get("/:id(\\d+)/answers/new", csrfProtection, asyncHandler(async (req, res) => {
+    if(res.locals.authenticated) {
+        const questionId = parseInt(req.params.id, 10);
+        const question = await db.Question.findByPk(questionId);
+        res.render("new-answer", {
+            question,
+            csrfToken: req.csrfToken(),
+        });
+    }else {
+        res.redirect("/login");
+    }
+})
+);
+
