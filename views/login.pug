@@ -2,15 +2,20 @@ extend layout.pug
 
 include utils.pug
 
+append head
+    link(rel="stylesheet" href="/stylesheets/forms.css")
+
 block content
-  +validationErrorSummary(errors)
-  form(action='/users/login' method='post')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      +field(null, 'email', email, 'email', 'Email')
-      +field(null, 'password', password, 'password', 'Password')
-      div()
-      button(type='submit' id="login" ) Login
-      button(type='submit' id="demo-login" ) Demo Login
-      a(href='/' ) Cancel
-  div(id='existing-user')
-      p: a(href='/users/register') Don't have an account?
+    +validationErrorSummary(errors)
+    form(action='/users/login' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('Login', 'email', email, 'email', 'Email')
+        +field(null, 'password', password, 'password', 'Password')
+        div(id="buttons")
+            button(type='submit' id="login" ) Login
+            button(type='submit' id="demo-login" ) Demo Login
+            a(href='/' ) Cancel
+    div(id='no-account')
+        p: a(href='/users/register') Don't have an account?
+    div(id='photo-credit')
+        <span>Photo by <a href="https://unsplash.com/@efekurnaz?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Efe Kurnaz</a> on <a href="https://unsplash.com/wallpapers/colors/neon?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>

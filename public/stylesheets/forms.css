@@ -5,9 +5,15 @@
 }
 
 body {
-  background-image: url(https://picsum.photos/1080);
+  background-image: url('/images/efe-kurnaz-RnCPiXixooY-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
+  height: 100vh;
 }
+
+
+/* ------ Form ------ */
 
 form {
   background-color: rgb(24, 26, 27);
@@ -46,48 +52,92 @@ input {
   border-radius: 2px;
 }
 
-button#register {
-  border: 1px solid rgb(88, 161, 88);
+div#buttons {
+  margin: 5px 0 0 0;
+  width: 200px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+button#register,
+button#login,
+button#demo-login {
+  border: 1px solid rgb(90, 187, 187);
   border-radius: 2px;
-  background-color: rgb(59, 121, 59);
+  background-color: rgb(64, 146, 146);
   color: white;
   font-size: 9px;
   font-weight: bold;
   padding: 5px;
-  display: flex;
-  justify-content: flex-end;
 }
 
-button#register:hover {
+button#register:hover,
+button#login:hover,
+button#demo-login:hover {
   border: 1px solid rgb(59, 116, 59);
   background-color: rgb(46, 99, 46);
   cursor: pointer;
 }
 
-button#register:active {
+button#register:active,
+button#login:active,
+button#demo-login:active {
   transform: translateY(0.5px);
 }
 
 a {
-  font-size: 8px;
+  font-size: 7px;
   color: rgb(107, 107, 107);
   margin: 7px 0 0
 }
 
+/* Account link */
 div#existing-user {
   display: flex;
   justify-content: flex-end;
   width: 285px;
   position: absolute;
-  top: 360px;
+  top: 350px;
   left: 0;
   right: 0;
   margin: auto;
 }
 
+/* Account link */
+div#no-account {
+  display: flex;
+  justify-content: flex-end;
+  width: 285px;
+  position: absolute;
+  top: 245px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+/* ------ Links outside of form, account & photo credit ------ */
+
+/* Account link */
 p a {
   display: flex;
+  font-size: 8px;
   color: rgb(255, 255, 255);
   margin: 7px 5px 0 0;
+  text-shadow: rgba(20, 20, 20, 0.5) 0px 0px 5px;
+}
+
+div#photo-credit {
+  display: flex;
+  position: absolute;
+  bottom: 5px;
+  right: 6px;
+}
+
+div#photo-credit span,
+div#photo-credit a {
+  font-size: 6px;
+  color: white;
   text-shadow: rgba(20, 20, 20, 0.5) 0px 0px 5px;
 }
