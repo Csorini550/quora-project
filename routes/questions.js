@@ -199,3 +199,6 @@ router.post("/:id(\\d+)/answers", csrfProtection, answerValidators, asyncHandler
     }
 
 }));
+
+
+module.exports = router;
