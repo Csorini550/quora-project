@@ -1,0 +1,16 @@
+extend layout.pug
+
+include utils.pug
+
+block content
+  +validationErrorSummary(errors)
+  form(action='/users/login' method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +field(null, 'email', user.emailAddress, 'email', 'Email')
+      +field(null, 'password', user.password, 'password', 'Password')
+      div()
+      button(type='submit' id="login" ) Login
+      button(type='submit' id="demo-login" ) Demo Login
+      a(href='/' ) Cancel
+  div(id='existing-user')
+      p: a(href='/users/register') Don't have an account?

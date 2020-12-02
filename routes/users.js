@@ -3,9 +3,10 @@ const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
+const { loginUser } = require("../auth");
 const router = express.Router();
-// const { getUserToken, requireAuth } = require('../auth');
 
+// Loads form to register new user
 router.get('/register', csrfProtection, (req, res) => {
   const user = db.User.build();
   res.render('user-register', {
@@ -13,7 +14,6 @@ router.get('/register', csrfProtection, (req, res) => {
     user,
     csrfToken: req.csrfToken(),
   });
-
 });
 
 const userValidators = [
@@ -63,35 +63,78 @@ const userValidators = [
     }),
 ];
 
-router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-  const { emailAddress, firstName, lastName, password } = req.body;
-  const user = db.User.build({
-    emailAddress,
-    firstName,
-    lastName,
-  });
+// Add user to db
+router.post(
+  '/register',
+  csrfProtection,
+  userValidators,
+  asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    const user = db.User.build({ email });
+    const validatorErrors = validationResult(req);
 
-  const validatorErrors = validationResult(req);
-  if (validatorErrors.isEmpty()) {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    user.hashedPassword = hashedPassword;
-    await user.save();
-    loginUser(req, res, user);
-    res.redirect('/');
-  } else {
-    const errors = validatorErrors.array().map((error) => error.msg);
-    res.render('user-register', {
-      title: 'Register',
-      user,
-      errors,
-      csrfToken: req.csrfToken(),
-    });
-  }
+    try {
+      if (validatorErrors.isEmpty()) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        user.hashedPassword = hashedPassword;
+        await user.save();
 
-}));
+        loginUser(req, res, user);
+        return req.session.save((err) => {
+          if (!err) {
+            console.log('No Error');
+            return res.redirect('/');
+          } else {
+            console.log(err);
+            next(err);
+          }
+        });
+      } else {
+        const errors = validatorErrors.array().map((err) => err.msg);
+        res.render('register', {
+          user,
+          errors,
+          csrfToken: req.csrfToken()
+        });
+      }
+    } catch (e) {
+      console.log(e);
+      next(e);
+    }
+  })
+);
 
+// // Create new user
+// router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
+//   const { emailAddress, firstName, lastName, password } = req.body;
+//   const user = db.User.build({
+//     emailAddress,
+//     firstName,
+//     lastName,
+//   });
+
+//   const validatorErrors = validationResult(req);
+//   if (validatorErrors.isEmpty()) {
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     user.hashedPassword = hashedPassword;
+//     await user.save();
+//     loginUser(req, res, user);
+//     res.redirect('/');
+//   } else {
+//     const errors = validatorErrors.array().map((error) => error.msg);
+//     res.render('user-register', {
+//       title: 'Register',
+//       user,
+//       errors,
+//       csrfToken: req.csrfToken(),
+//     });
+//   }
+
+// }));
+
+// Load login page
 router.get('/login', csrfProtection, (req, res) => {
-  res.render('user-login', {
+  res.render('login', {
     title: 'Login',
     csrfToken: req.csrfToken(),
   });
@@ -100,6 +143,8 @@ const loginValidators = [
   check('emailAddress').exists({ checkFalsy: true }).withMessage('Please provide a value for Email Address'),
   check('password').exists({ checkFalsy: true }).withMessage('Please provide a value for Password'),
 ];
+
+// 
 router.post(
   '/login',
   csrfProtection,
@@ -127,7 +172,7 @@ router.post(
     } else {
       errors = validatorErrors.array().map((error) => error.msg);
     }
-    res.render('user-login', {
+    res.render('login', {
       title: 'Login',
       emailAddress,
       errors,
@@ -135,9 +180,11 @@ router.post(
     });
   })
 );
+
+// Logout user, redirect to home
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
-  res.redirect('/');
+  res.redirect('/login');
 });
 
 module.exports = router;
