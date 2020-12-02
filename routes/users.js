@@ -4,7 +4,8 @@ const { check, validationResult } = require("express-validator");
 
 const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
-const { loginUser } = require("../auth");
+const { User, sequelize } = db;
+const { loginUser, logoutUser } = require("../auth");
 
 const router = express.Router();
 
@@ -13,16 +14,16 @@ const router = express.Router();
 //******************************************************
 
 const userValidators = [
-  check("firstName")
+  check("username")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for First Name")
+    .withMessage("Please provide a value for Username")
     .isLength({ max: 50 })
-    .withMessage("First Name must not be more than 50 characters long"),
-  check("lastName")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for Last Name")
-    .isLength({ max: 50 })
-    .withMessage("Last Name must not be more than 50 characters long"),
+    .withMessage("Username must not be more than 50 characters long"),
+  // check("lastName")
+  //   .exists({ checkFalsy: true })
+  //   .withMessage("Please provide a value for Last Name")
+  //   .isLength({ max: 50 })
+  //   .withMessage("Last Name must not be more than 50 characters long"),
   check("emailAddress")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address")
@@ -264,5 +265,17 @@ router.get(
     return res.redirect("/");
   })
 );
+
+//******************************************************
+//******************** Questions ***********************
+//******************************************************
+
+//TODO: QUESTION ROUTES
+
+//******************************************************
+//******************** Answers *************************
+//******************************************************
+
+//TODO: ANSWER ROUTES
 
 module.exports = router;
