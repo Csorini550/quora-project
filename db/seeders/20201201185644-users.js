@@ -9,8 +9,16 @@ module.exports = {
       [
         {
           email: faker.internet.email(),
-          firstName: faker.firstName.name(),
-          lastName: faker.lastName.name(),
+          firstName: faker.name.firstName(),
+          lastName: faker.name.lastName(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password()),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          email: faker.internet.email(),
+          firstName: faker.name.firstName(),
+          lastName: faker.name.lastName(),
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
