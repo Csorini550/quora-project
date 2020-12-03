@@ -104,6 +104,24 @@ router.post(
 );
 
 //******************************************************
+//******************** Delete Question *****************
+
+router.get(
+  "/:id/delete",
+  asyncHandler(async (req, res, next) => {
+    const questionId = parseInt(req.params.id, 10);
+    const question = await db.Question.findByPk(questionId);
+
+    if (question) {
+      await question.destroy();
+      res.redirect("/");
+    } else {
+      next(questionNotFoundError(questionId));
+    }
+  })
+);
+
+//******************************************************
 //******************** Edit Question ********************
 
 router.get(

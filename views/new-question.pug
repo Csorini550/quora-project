@@ -1,0 +1,23 @@
+//- extends layout.pug
+
+
+//- include utils.pug
+
+//- append head
+//-     script(src="/javascript/demo.js" type="module" async defer)
+//-     link(rel="stylesheet" href="/stylesheets/new-question.css")
+
+//- block content
+//-     include navbar
+//-     div.main
+//-         div.form-container
+//-             h2.form-title Post New Question
+//-             div.form-container__elements
+//-                 +validationErrorsSummary(errors)
+//-                 form(action='/questions' method='post')   
+//-                     input(required type='hidden' name='_csrf' value= csrfToken)
+//-                     +field('title', null, 'Title')
+//-                     textarea.form-elements__content__input(placeholder="Content" required name="content" maxlength=500)
+//-                     div.form-container-elements__actions-container
+//-                       button.form-container-elements__button(type='submit') Submit
+//-                       a.form-container-elements__cancel(href='/') Cancel
