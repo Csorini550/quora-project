@@ -109,13 +109,16 @@ router.post(
 //******************************************************
 //******************** Delete Question *****************
 
-router.get(
-  "/:id/delete",
+router.post(
+  "/:id/delete", csrfProtection,
   asyncHandler(async (req, res, next) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await db.Question.findByPk(questionId);
 
     if (question) {
+      await db.Answer.destroy({
+        where: { questionId }
+      })
       await question.destroy();
       res.redirect("/");
     } else {
@@ -123,6 +126,17 @@ router.get(
     }
   })
 );
+
+//set up router .get res.render('delete-question')
+router.get("/:id/delete", csrfProtection, asyncHandler(async (req, res) => {
+  const questionId = parseInt(req.params.id, 10);
+  const question = await db.Question.findByPk(questionId);
+  res.render("delete-question", {
+    title: "Delete question",
+    question,
+    csrfToken: req.csrfToken(),
+  })
+}))
 
 //******************************************************
 //******************** Edit Question ********************
