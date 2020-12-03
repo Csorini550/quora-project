@@ -1,0 +1,10 @@
+extends navbar.pug
+
+block content
+  h3= question.value
+    p Are you sure you want to delete this question?
+  div
+    form(action=`/questions/${question.id}/delete` method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      button(type='submit') Delete question
+    a(href=`/` role='button') Cancel
