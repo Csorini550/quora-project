@@ -1,11 +1,15 @@
-extends navbar.pug
-
 include utils.pug
 
+append head
+    link(rel="stylesheet" href="/stylesheets/reset.css")
+    link(rel="stylesheet" href="/stylesheets/edit-question.css")
+
 block content
+  include navbar
   +validationErrorSummary(errors)
   form(action=`/question/${question.id}/edit` method='post')
-    include new-question.pug
-    div
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +field('Edit question', 'question', question.value, 'text', 'Question...')
+    div#buttons
       button(type='submit') Update question
       a(href=`/question/${question.id}`) Cancel
