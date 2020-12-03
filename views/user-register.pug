@@ -11,7 +11,7 @@ block content
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Create Account', 'firstName', user.firstName, 'text', 'First Name')
         +field(null, 'lastName', user.lastName, 'text', 'Last Name')
-        +field(null, 'email', user.emailAddress, 'email', 'Email')
+        +field(null, 'email', user.email, 'email', 'Email')
         +field(null, 'password', user.password, 'password', 'Password')
         +field(null, 'confirmPassword', '', 'password', 'Confirm Password')
         div(id="buttons")

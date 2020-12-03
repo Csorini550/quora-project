@@ -51,7 +51,9 @@ router.get(
         csrfToken: req.csrfToken(),
       });
     } else {
+
       res.redirect("/users/login");
+
     }
   })
 );
@@ -131,13 +133,14 @@ router.get(
   asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await db.Question.findByPk(questionId);
-    if (res.locals.authenticated) {
-      res.render("edit-question", {
+    console.log('THIS IS HERE!!!!!!', res.locals.authenticated)
+    if (!res.locals.authenticated) { //added !
+      return res.render("edit-question", { //made changes here added return
         question,
         csrfToken: req.csrfToken(),
       });
     } else {
-      res.redirect("/login");
+      res.redirect("/users/login");
     }
   })
 );
@@ -176,7 +179,7 @@ router.get(
         csrfToken: req.csrfToken(),
       });
     } else {
-      res.redirect("/login");
+      res.redirect("/users/login");
     }
   })
 );

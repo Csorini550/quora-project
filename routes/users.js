@@ -134,7 +134,9 @@ router.post(
         e.name === "SequelizeValidationError" ||
         e.name === "SequelizeUniqueConstraintError"
       ) {
+
         const errors = e.errors.map((error => error.message));
+
         res.render("user-register", {
           title: "Register",
           user,
@@ -214,7 +216,7 @@ router.post(
           // If the password hashes match, then login the user
           // and redirect them to the default route.
           loginUser(req, res, user);
-          return res.session.save((err) => {
+          return req.session.save((err) => {
             if (!err) {
               console.log("no error");
               return res.redirect("/");
