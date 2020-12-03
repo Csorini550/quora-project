@@ -5,7 +5,7 @@ include utils.pug
 block content
   +validationErrorSummary(errors)
   form(action=`/question/${question.id}/edit` method='post')
-    include question.pug
+    include new-question.pug
     div
       button(type='submit') Update question
       a(href=`/question/${question.id}`) Cancel
