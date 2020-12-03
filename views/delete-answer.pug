@@ -1,0 +1,11 @@
+extends navbar.pug
+
+block content
+h1= answer.value
+div
+    p Are you sure you want to delete this answer?
+div
+    form(action=`/answer/delete${answer.id}` method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    button(type='submit') Delete answer
+    a(href=`/answer/${answer.id}` role='button') Cancel
