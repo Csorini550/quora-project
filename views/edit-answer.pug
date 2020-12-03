@@ -1,0 +1,10 @@
+extends navbar.pug
+
+include utils.pug
+
+block content
+    +validationErrorSummary(errors)
+    form(action=`/answer/edit/${answer.id}` method='post')
+        include new-answer.pug
+        button(type='submit') Update answer
+        a(href=`/answer/${answer.id}`) Cancel
