@@ -32,15 +32,13 @@ const userValidators = [
     .isEmail()
     .withMessage("Email Address is not a valid email")
     .custom((value) => {
-      return db.User.findOne({ where: { email: value } }).then(
-        (user) => {
-          if (user) {
-            return Promise.reject(
-              "The provided Email Address is already in use by another account"
-            );
-          }
+      return db.User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Email Address is already in use by another account"
+          );
         }
-      );
+      });
     }),
   check("password")
     .exists({ checkFalsy: true })
@@ -134,8 +132,7 @@ router.post(
         e.name === "SequelizeValidationError" ||
         e.name === "SequelizeUniqueConstraintError"
       ) {
-
-        const errors = e.errors.map((error => error.message));
+        const errors = e.errors.map((error) => error.message);
 
         res.render("user-register", {
           title: "Register",
@@ -149,34 +146,6 @@ router.post(
     }
   })
 );
-
-// // Create new user
-// router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-//   const { email, firstName, lastName, password } = req.body;
-//   const user = db.User.build({
-//     email,
-//     firstName,
-//     lastName,
-//   });
-
-//   const validatorErrors = validationResult(req);
-//   if (validatorErrors.isEmpty()) {
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     user.hashedPassword = hashedPassword;
-//     await user.save();
-//     loginUser(req, res, user);
-//     res.redirect('/');
-//   } else {
-//     const errors = validatorErrors.array().map((error) => error.msg);
-//     res.render('user-register', {
-//       title: 'Register',
-//       user,
-//       errors,
-//       csrfToken: req.csrfToken(),
-//     });
-//   }
-
-// }));
 
 //******************************************************
 //******************** User Login **********************
