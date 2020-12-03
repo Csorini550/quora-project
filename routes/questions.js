@@ -44,7 +44,8 @@ router.get(
   "/new",
   csrfProtection,
   asyncHandler(async (req, res) => {
-    if (res.locals.authenticated) {
+    //res.locals.authenticated
+    if (true) {
       res.render("new-question", {
         title: "New Question",
         csrfToken: req.csrfToken(),

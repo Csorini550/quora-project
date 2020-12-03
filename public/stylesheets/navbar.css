@@ -1,6 +1,6 @@
 /*nav background color*/
 .nav {
-    background-color: lawngreen;
+    background-color: rgb(240, 241, 241);
     overflow: hidden;
     display: flex;
     margin: 0 auto;
@@ -11,10 +11,12 @@
     left: 0;
     position: fixed;
     box-sizing: border-box;
+    align-items: center;
 }
 
 body {
     padding-top: 40px;
+    background-color: white;
 }
 
 .nav a {
