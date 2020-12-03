@@ -134,7 +134,9 @@ router.post(
         e.name === "SequelizeValidationError" ||
         e.name === "SequelizeUniqueConstraintError"
       ) {
-        const errors = e.errors.map((error) => error.msg);
+
+        const errors = e.errors.map((error => error.message));
+
         res.render("user-register", {
           title: "Register",
           user,
