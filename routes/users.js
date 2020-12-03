@@ -24,7 +24,7 @@ const userValidators = [
     .withMessage("Please provide a value for Last Name")
     .isLength({ max: 50 })
     .withMessage("Last Name must not be more than 50 characters long"),
-  check("emailAddress")
+  check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address")
     .isLength({ max: 50 })
@@ -32,7 +32,7 @@ const userValidators = [
     .isEmail()
     .withMessage("Email Address is not a valid email")
     .custom((value) => {
-      return db.User.findOne({ where: { emailAddress: value } }).then(
+      return db.User.findOne({ where: { email: value } }).then(
         (user) => {
           if (user) {
             return Promise.reject(
@@ -65,7 +65,7 @@ const userValidators = [
 ];
 
 const loginValidators = [
-  check("emailAddress")
+  check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Email Address"),
   check("password")
@@ -96,8 +96,10 @@ router.post(
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res, next) => {
-    const { email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
     const user = db.User.build({
+      firstName,
+      lastName,
       email,
     });
 
@@ -120,7 +122,7 @@ router.post(
         });
       } else {
         const errors = validatorErrors.array().map((err) => err.msg);
-        res.render("register", {
+        res.render("user-register", {
           title: "Register",
           user,
           errors,
@@ -132,8 +134,8 @@ router.post(
         e.name === "SequelizeValidationError" ||
         e.name === "SequelizeUniqueConstraintError"
       ) {
-        const errors = e.errors.map((error = error.message));
-        res.render("register", {
+        const errors = e.errors.map((error) => error.msg);
+        res.render("user-register", {
           title: "Register",
           user,
           errors,
@@ -148,9 +150,9 @@ router.post(
 
 // // Create new user
 // router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-//   const { emailAddress, firstName, lastName, password } = req.body;
+//   const { email, firstName, lastName, password } = req.body;
 //   const user = db.User.build({
-//     emailAddress,
+//     email,
 //     firstName,
 //     lastName,
 //   });
@@ -193,14 +195,14 @@ router.post(
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
-    const { emailAddress, password } = req.body;
+    const { email, password } = req.body;
 
     let errors = [];
 
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
       // Attempt to get the user by their email address.
-      const user = await db.User.findOne({ where: { emailAddress } });
+      const user = await db.User.findOne({ where: { email } });
       if (user !== null) {
         // If the user exists then compare their password
         // to the provided password.
@@ -212,7 +214,7 @@ router.post(
           // If the password hashes match, then login the user
           // and redirect them to the default route.
           loginUser(req, res, user);
-          return res.session.save((err) => {
+          return req.session.save((err) => {
             if (!err) {
               console.log("no error");
               return res.redirect("/");
@@ -230,7 +232,7 @@ router.post(
     }
     res.render("login", {
       title: "Login",
-      emailAddress,
+      email,
       errors,
       csrfToken: req.csrfToken(),
     });
@@ -260,7 +262,7 @@ router.get(
   "/demo",
   asyncHandler(async (req, res, next) => {
     const demoUser = await db.User.findOne({
-      where: { emailAddress: "demo@demo.com" },
+      where: { email: "demo@demo.com" },
     });
     loginUser(req, res, demoUser);
     return res.redirect("/");

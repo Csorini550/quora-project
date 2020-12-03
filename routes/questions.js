@@ -50,7 +50,7 @@ router.get(
         csrfToken: req.csrfToken(),
       });
     } else {
-      res.resdirect("/login");
+      res.resdirect("/users/login");
     }
   })
 );
@@ -136,7 +136,7 @@ router.get(
         csrfToken: req.csrfToken(),
       });
     } else {
-      res.redirect("/login");
+      res.redirect("/users/login");
     }
   })
 );
@@ -175,7 +175,7 @@ router.get(
         csrfToken: req.csrfToken(),
       });
     } else {
-      res.redirect("/login");
+      res.redirect("/users/login");
     }
   })
 );
