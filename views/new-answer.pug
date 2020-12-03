@@ -1,0 +1,16 @@
+extends navbar.pug
+
+include utils.pug
+
+append head
+    link(rel="stylesheet" href="/stylesheets/new-answer.css")
+
+block content
+    +validationErrorSummary(errors)
+    form(action='/answer/new' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('Answer a question', 'answer', answer.value, 'text', 'Answer...')
+        div(id="buttons")
+            button(type='submit' id="new-answer" ) Submit answer
+            a(href='/' ) Cancel
+  

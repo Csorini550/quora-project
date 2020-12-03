@@ -1,0 +1,17 @@
+extends navbar.pug
+
+include utils.pug
+
+
+append head
+    link(rel="stylesheet" href="/stylesheets/new-questions.css")
+
+block content
+    +validationErrorSummary(errors)
+    form(action='/question/new' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('Ask a question', 'question', question.value, 'text', 'Question...')
+        div(id="buttons")
+            button(type='submit' id="new-question" ) Submit question
+            a(href='/' ) Cancel
+    
