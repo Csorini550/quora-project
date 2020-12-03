@@ -4,8 +4,8 @@ include utils.pug
 
 block content
   +validationErrorSummary(errors)
-  form(action=`/question/edit/${question.id}` method='post')
+  form(action=`/question/${question.id}/edit` method='post')
     include question.pug
-    div(class='py-4')
+    div
       button(type='submit') Update question
       a(href=`/question/${question.id}`) Cancel
