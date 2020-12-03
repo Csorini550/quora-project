@@ -32,6 +32,8 @@ div#ask-question {
 
 div#answer-question {
     background-color:rgba(218, 253, 251, 0.9);
+    width: 500px;
+    height: 146px;
 }
 
 div#user-question {
