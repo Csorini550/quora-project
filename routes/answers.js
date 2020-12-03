@@ -25,8 +25,8 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const answerId = parseInt(req.params.id, 10);
     const answer = await db.Answer.findByPk(answerId);
-    if (res.locals.authenticated) {
-      res.render("edit-answer", { answer, csrfToken: req.csrfToken() });
+    if (!res.locals.authenticated) {
+      return res.render("edit-answer", { answer, csrfToken: req.csrfToken() });
     } else {
       res.redirect("/login");
     }
