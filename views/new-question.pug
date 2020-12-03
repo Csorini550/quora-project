@@ -5,11 +5,11 @@ include utils.pug
 
 append head
     link(rel="stylesheet" href="/stylesheets/reset.css")
-    link(rel="stylesheet" href="/stylesheets/new-question.css")
+    link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
 
 block content
     +validationErrorSummary(errors)
-    form(action='/question/new' method='post')
+    form(action='/questions/new' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Ask a question', 'question', '', 'text', 'Question...')
         div(id="buttons")
