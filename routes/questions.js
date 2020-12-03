@@ -50,7 +50,7 @@ router.get(
         csrfToken: req.csrfToken(),
       });
     } else {
-      res.resdirect("/login");
+      res.redirect("/users/login");
     }
   })
 );

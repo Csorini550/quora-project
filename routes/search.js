@@ -7,17 +7,14 @@ const { Op } = require('sequelize');
 
 router.post('/', asyncHandler(async(req, res, next) => {
     const { term } = req.body;
-    const searchQuestions = await db.Questions.findAll({
+    const searchQuestions = await db.Question.findAll({
         where: {
-            title: { [Op.ilike]: '%' + term + '%', 
+            value: { [Op.iLike]: '%' + term + '%', 
          }, 
         },
     });
-    res.json(searchQuestions);  
-    
-            
-        })
-);
+    res.json(searchQuestions);          
+}));
 
 
 //get
