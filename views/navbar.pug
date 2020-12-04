@@ -17,6 +17,6 @@ html
         i(class="far fa-question-circle")
       a(href='/users/answer')
         i(class="fas fa-book")
-      form(id='search-bar')
+      form(id='search-bar' action='/api/search')
         input.search-input(type='text' name='term' placeholder='Search for a question!')
     block content

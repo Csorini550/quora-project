@@ -5,15 +5,16 @@ const db = require("../db/models");
 const { Op } = require('sequelize');
 
 
-router.post('/', asyncHandler(async(req, res, next) => {
-    const { term } = req.body;
+router.get('/', asyncHandler(async(req, res, next) => {
+    const { term } = req.query;
     const searchQuestions = await db.Question.findAll({
         where: {
             value: { [Op.iLike]: '%' + term + '%', 
          }, 
         },
     });
-    res.json(searchQuestions);          
+    res.render('search', {searchQuestions} );
+    //res.json(searchQuestions);          
 }));
 
 
