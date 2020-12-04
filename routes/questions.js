@@ -51,7 +51,7 @@ router.get(
         csrfToken: req.csrfToken(),
       });
     } else {
-
+      // is this being used?
       res.redirect("/users/login");
 
     }

@@ -14,12 +14,12 @@ form {
   background-color: rgba(218, 253, 251, 0.9);
   width: 700px;
   border-radius: 7px;
-  border: 2px solid rgb(52, 65, 128);
+  /* border: 2px solid rgb(52, 65, 128); */
   box-shadow: 2px 2px 7px rgba(32, 40, 80, 0.5);
-  display: flex; /* labels, inputs, btn */
-  align-items: center; /* labels, inputs, btn */
-  flex-flow: column; /* labels, inputs, btn */
-  /* position: absolute; */
+  /* display: flex; /* labels, inputs, btn */
+  /* align-items: center; /* labels, inputs, btn */
+  /* flex-flow: column; /* labels, inputs, btn */
+  position: absolute;
   top: 200px;
   left: 0;
   right: 0;

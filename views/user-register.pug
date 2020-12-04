@@ -8,6 +8,8 @@ append head
 block content
     +validationErrorSummary(errors)
     form(action='/users/register' method='post')
+        div#logo
+            img(src="/images/query-logo.svg")
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Create Account', 'firstName', user.firstName, 'text', 'First Name')
         +field(null, 'lastName', user.lastName, 'text', 'Last Name')

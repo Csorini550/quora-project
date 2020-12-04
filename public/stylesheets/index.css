@@ -1,9 +1,10 @@
 body {
   background-image: linear-gradient(
     to bottom right,
-    rgb(57, 115, 130),
-    rgb(52, 65, 128)
+    rgb(252, 153, 105),
+    rgb(238, 37, 138)
   );
+  /* background-image: linear-gradient(to bottom right, rgb(57, 115, 130), rgb(52, 65, 128)); */
   height: 100vh;
 }
 
@@ -17,7 +18,13 @@ div.center-column {
   right: 0;
   top: 125px;
 }
-
+#expandDiv {
+  height: fit-content;
+  z-index: 2;
+  position: relative;
+  /* height: fit-contents
+     */
+}
 div.center-column-item {
   background-color: white;
   margin: auto;
@@ -34,10 +41,10 @@ div#ask-question {
   margin: 0 0 25px 0;
 }
 
-div#answer-question {
+div.answer-question {
   background-color: rgba(218, 253, 251, 0.9);
-  /* width: 500px;
-  height: 146px; */
+  width: 800px;
+  height: 146px;
 }
 
 div#user-question {
