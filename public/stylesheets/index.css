@@ -77,6 +77,10 @@ textarea::-webkit-input-placeholder {
   padding: auto 4px;
 }
 
+h1 {
+    /* ADD */
+}
+
 h2 {
   color: rgb(55, 87, 127);
   font-size: 17px;
