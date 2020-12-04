@@ -1,5 +1,6 @@
 body {
-    background-image: linear-gradient(to bottom right, rgb(57, 115, 130), rgb(52, 65, 128));
+    background-image: linear-gradient(to bottom right, rgb(252, 153, 105), rgb(238, 37, 138));
+    /* background-image: linear-gradient(to bottom right, rgb(57, 115, 130), rgb(52, 65, 128)); */
     height: 100vh;
 }
 
