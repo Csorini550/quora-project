@@ -5,7 +5,7 @@ append head
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
-  script(src="/javascript/public/listener.js" type="module") // might throw an error and need public/listener
+  script(src="/listener.js" type="module") // might throw an error and need public/listener
 block content
   div(class="center-column")
     div(class="center-column-item" id="ask-question")
@@ -13,19 +13,19 @@ block content
         span(id="user1") UserName1
       div(id="question")
         h1 Ask your question here
-    div(class="center-column-item" id="answer-question")
+    div(class="center-column-item answer-question")
       div(id="user-answer")
         span(id="user2") UserName2
       div(id="answer")
         h2 What are the odds we get an A on this project?
         p If we all buy him a bag of premium, ethically-sourced, single-origin coffee beans, we may have a chance to raise our grade an additional 10%...
-    div(class="center-column-item" id="answer-question")
+    div(class="center-column-item answer-question")
       div(id="user-answer")
         span(id="user2") UserName2
       div(id="answer")
         h2 What are the odds we get an A on this project?
         p If we all buy him a bag of premium, ethically-sourced, single-origin coffee beans, we may have a chance to raise our grade an additional 10%...
-    div(class="center-column-item" id="answer-question")
+    div(class="center-column-item answer-question" )
       div(id="user-answer")
         span(id="user2") UserName2
       div(id="answer")
