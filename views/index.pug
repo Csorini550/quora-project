@@ -29,7 +29,9 @@ block content
       div.center-column
         ul
           each question in questions
-            a(href=question.link)
+            //- a(href=question.link)
+            p= question.User.email
+            p= question.value
               div.center-column-item
     //- div.center-column
     //-     li.center-column-item= content

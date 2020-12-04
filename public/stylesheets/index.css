@@ -18,6 +18,7 @@ div.center-column {
   right: 0;
   top: 125px;
 }
+
 #expandDiv {
   height: fit-content;
   z-index: 2;
@@ -79,6 +80,10 @@ textarea::-webkit-input-placeholder {
   font-weight: bold;
   letter-spacing: -0.5px;
   padding: auto 4px;
+}
+
+h1 {
+    /* ADD */
 }
 
 h2 {
