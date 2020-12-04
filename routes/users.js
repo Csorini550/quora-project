@@ -32,15 +32,13 @@ const userValidators = [
     .isEmail()
     .withMessage("Email Address is not a valid email")
     .custom((value) => {
-      return db.User.findOne({ where: { email: value } }).then(
-        (user) => {
-          if (user) {
-            return Promise.reject(
-              "The provided Email Address is already in use by another account"
-            );
-          }
+      return db.User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Email Address is already in use by another account"
+          );
         }
-      );
+      });
     }),
   check("password")
     .exists({ checkFalsy: true })
@@ -72,6 +70,33 @@ const loginValidators = [
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Password"),
 ];
+
+//******************** Helpers *************************
+//******************************************************
+
+function dateCreate(questions) {
+  let months = {
+    Jan: "01",
+    Feb: "02",
+    Mar: "03",
+    Apr: "04",
+    May: "05",
+    Jun: "06",
+    Jul: "07",
+    Aug: "08",
+    Sep: "09",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12",
+  };
+
+  for (let i = 0; i < questions.length; i++) {
+    let question = questions[i];
+    let createdAt = question.createdAt.toString();
+    let parts = createdAt.split(" ");
+    question.formattedDate = months[parts[1]] + "/" + parts[2] + "/" + parts[3];
+  }
+}
 
 //************ Routes **********************************
 
@@ -134,8 +159,7 @@ router.post(
         e.name === "SequelizeValidationError" ||
         e.name === "SequelizeUniqueConstraintError"
       ) {
-
-        const errors = e.errors.map((error => error.message));
+        const errors = e.errors.map((error) => error.message);
 
         res.render("user-register", {
           title: "Register",
@@ -149,34 +173,6 @@ router.post(
     }
   })
 );
-
-// // Create new user
-// router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-//   const { email, firstName, lastName, password } = req.body;
-//   const user = db.User.build({
-//     email,
-//     firstName,
-//     lastName,
-//   });
-
-//   const validatorErrors = validationResult(req);
-//   if (validatorErrors.isEmpty()) {
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     user.hashedPassword = hashedPassword;
-//     await user.save();
-//     loginUser(req, res, user);
-//     res.redirect('/');
-//   } else {
-//     const errors = validatorErrors.array().map((error) => error.msg);
-//     res.render('user-register', {
-//       title: 'Register',
-//       user,
-//       errors,
-//       csrfToken: req.csrfToken(),
-//     });
-//   }
-
-// }));
 
 //******************************************************
 //******************** User Login **********************
@@ -275,12 +271,73 @@ router.get(
 //******************** Questions ***********************
 //******************************************************
 
-//TODO: QUESTION ROUTES
+router.get(
+  "/users/:id/questions",
+  asyncHandler(async (req, res) => {
+    if (!res.locals.authenticated) {
+      return res.redirect("/login");
+    } else if (parseInt(req.params.id, 10) !== res.locals.user.id) {
+      res.redirect("/");
+    } else {
+      const questions = await db.Question.findAll({
+        where: { userId: res.locals.user.id },
+        include: [
+          { model: User, as: "User", attributes: ["email"] },
+
+          {
+            model: Answer,
+            as: "Answers",
+            attributes: [[Answer.sequelize.fn("COUNT", "id"), "answerCount"]],
+          },
+        ],
+        order: [["createdAt", "DESC"]],
+        attributes: ["value", "createdAt", "id"],
+        group: ["Question.id", "User.id", "Answers.id"],
+      });
+
+      dateCreate(questions);
+
+      res.render("myQuestion", { questions });
+    }
+  })
+);
 
 //******************************************************
 //******************** Answers *************************
 //******************************************************
 
-//TODO: ANSWER ROUTES
+router.get(
+  "/users/:id/answers",
+  asyncHandler(async (req, res) => {
+    if (!res.locals.authenticated) {
+      return res.redirect("/login");
+    } else if (parseInt(req.params.id, 10) !== res.locals.user.id) {
+      res.redirect("/");
+    } else {
+      const questions = await db.Question.findAll({
+        include: [
+          { model: User, as: "User", attributes: ["email"] },
+
+          {
+            model: Answer,
+            as: "Answers",
+            attributes: [
+              [Answer.sequelize.fn("COUNT", "id"), "answerCount"],
+              "userId",
+            ],
+            where: { userId: res.locals.user.id },
+          },
+        ],
+        order: [["createdAt", "DESC"]],
+        attributes: ["value", "createdAt", "id"],
+        group: ["Question.id", "User.id", "Answers.id"],
+      });
+
+      dateCreate(questions);
+
+      res.render("myQuestion", { questions });
+    }
+  })
+);
 
 module.exports = router;
