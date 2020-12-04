@@ -1,14 +1,17 @@
 body {
-    /* background-image: linear-gradient(to bottom right, rgb(252, 153, 105), rgb(238, 37, 138)); */
-    background-image: linear-gradient(to bottom right, rgb(57, 115, 130), rgb(52, 65, 128));
-    height: 100vh;
+  /* background-image: linear-gradient(to bottom right, rgb(252, 153, 105), rgb(238, 37, 138)); */
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(57, 115, 130),
+    rgb(52, 65, 128)
+  );
+  height: 100vh;
 }
-
 
 /* ------ Form ------ */
 
 form {
-  background-color:rgba(218, 253, 251, 0.9);
+  background-color: rgba(218, 253, 251, 0.9);
   width: 700px;
   border-radius: 7px;
   border: 2px solid rgb(52, 65, 128);
@@ -16,7 +19,7 @@ form {
   display: flex; /* labels, inputs, btn */
   align-items: center; /* labels, inputs, btn */
   flex-flow: column; /* labels, inputs, btn */
-  position: absolute;
+  /* position: absolute; */
   top: 200px;
   left: 0;
   right: 0;
