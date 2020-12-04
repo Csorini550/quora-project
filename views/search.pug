@@ -21,4 +21,8 @@ block content
           h1 Search Results
           each question in searchQuestions
             h2= question.value
+            //p tag w/ answers
             div(id="search-result")
+              each answer in question.Answers
+                p= answer.value
+                //question.user

@@ -54,10 +54,6 @@ body {
 .navbar-logo {
     height: 30px;
     align-self: center;
-<<<<<<< HEAD
-}
-
-=======
     margin: 0 30px;
 }
 
@@ -74,4 +70,3 @@ body {
     color: rgb(32, 40, 80, 0.5);
     font-size: 15px;
 }
->>>>>>> master

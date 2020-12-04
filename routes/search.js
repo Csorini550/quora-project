@@ -12,9 +12,9 @@ router.get('/', asyncHandler(async(req, res, next) => {
             value: { [Op.iLike]: '%' + term + '%', 
          }, 
         },
+        include: [db.User, db.Answer]
     });
-    
-    console.log(searchQuestions);
+
 
     // Model.findByPk(id, {
     //     include: [
