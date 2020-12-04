@@ -5,18 +5,23 @@ html
     <script src="https://kit.fontawesome.com/6e38a041a3.js" crossorigin="anonymous"></script>
     script(src="/javascripts/index.js")
     title="Query"
+    link(rel="stylesheet" href="/stylesheets/reset.css")
     link(rel='stylesheet' href='/stylesheets/navbar.css')
     link(rel='stylesheet' href='/stylesheets/new-question.css')
     block head
   body
     nav(class='nav')
-      img(src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Kevin_Federline.jpg" class='navbar-logo')
-      a(href='/')
+      img(src="/images/query-logo.svg" class='navbar-logo')
+      a(href='/') Home
         i(class="fas fa-home")
-      a(href='/users/question') 
+      a(href='/users/question') Questions
         i(class="far fa-question-circle")
-      a(href='/users/answer')
+      a(href='/users/answer') Answers
         i(class="fas fa-book")
       form(id='search-bar' action='/api/search')
         input.search-input(type='text' name='term' placeholder='Search for a question!')
+      div(class= 'dropdown')
+        button(onclick='myFunction()' class='dropButton')
+        div(id="myDropdown" class="dropdown-content")
+
     block content

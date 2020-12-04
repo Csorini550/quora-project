@@ -14,9 +14,6 @@ router.get('/', asyncHandler(async(req, res, next) => {
         },
     });
     
-    for (searchQuestions)
-    const answers = 
-
     console.log(searchQuestions);
 
     // Model.findByPk(id, {
