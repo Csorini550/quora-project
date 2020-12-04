@@ -37,4 +37,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
       console.error(err);
     }
   });
+
+  const questionCreate = document.querySelector(".question-form");
+
+  questionCreate.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const questionField = document.querySelector(".question-field").value;
+
+    const res = await fetch("/api/questions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ value: questionField }),
+    });
+  });
 });
