@@ -4,8 +4,9 @@ append head
     link(rel="stylesheet" href="/stylesheets/reset.css")
     link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
 
-block content
-  include navbar
+include navbar
+
+block content  
   +validationErrorSummary(errors)
   form(action=`/question/${question.id}/edit` method='post')
     input(type='hidden' name='_csrf' value=csrfToken)

@@ -6,6 +6,11 @@ body {
   height: 100vh;
 }
 
+div#logo {
+  width: 200px;
+  margin: 10px;
+}
+
 
 /* ------ Form ------ */
 
@@ -93,7 +98,7 @@ div#existing-user {
   justify-content: flex-end;
   width: 600px;
   position: absolute;
-  top: 573px;
+  top: 652px;
   left: 0;
   right: 0;
   margin: auto;
@@ -105,7 +110,7 @@ div#no-account {
   justify-content: flex-end;
   width: 600px;
   position: absolute;
-  top: 423px;
+  top: 502px;
   left: 0;
   right: 0;
   margin: auto;
