@@ -19,4 +19,8 @@ html
         i(class="fas fa-book")
       form(id='search-bar')
         input.search-input(type='text' name='term' placeholder='Search for a question!')
+      div(class= 'dropdown')
+        button(onclick='myFunction()' class='dropButton')
+        div(id="myDropdown" class="dropdown-content")
+
     block content
