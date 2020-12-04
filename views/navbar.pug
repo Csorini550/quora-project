@@ -5,7 +5,7 @@ html
     <script src="https://kit.fontawesome.com/6e38a041a3.js" crossorigin="anonymous"></script>
     script(src="/javascripts/index.js")
     title="Query"
-    link(rel="stylesheet" href="/stylesheets/reset.css")
+    //link(rel="stylesheet" href="/stylesheets/reset.css")
     link(rel='stylesheet' href='/stylesheets/navbar.css')
     block head
   body
@@ -17,7 +17,7 @@ html
         i(class="far fa-question-circle")
       a(href='/users/answer') Answers
         i(class="fas fa-book")
-      form(id='search-bar')
+      form(id='search-bar' action='/api/search')
         input.search-input(type='text' name='term' placeholder='Search for a question!')
       //- div(class= 'dropdown')
       //-   button(onclick='myFunction()' class='dropButton')

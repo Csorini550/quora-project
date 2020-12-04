@@ -5,15 +5,59 @@ const db = require("../db/models");
 const { Op } = require('sequelize');
 
 
-router.post('/', asyncHandler(async(req, res, next) => {
-    const { term } = req.body;
+router.get('/', asyncHandler(async(req, res, next) => {
+    const { term } = req.query;
     const searchQuestions = await db.Question.findAll({
         where: {
             value: { [Op.iLike]: '%' + term + '%', 
          }, 
         },
+        include: [db.User, db.Answer]
     });
-    res.json(searchQuestions);          
+
+    console.log(searchQuestions);
+
+    res.render('search', {searchQuestions} );
+    
+    // Model.findByPk(id, {
+    //     include: [
+    //       firstDataModel,
+    //       {
+    //         model: secondDataModel,
+    //         include: [thirdDataModel]
+    //       }
+    //     ]
+    // });
+
+    //users and answers of the question 
+    //found in the searchQuestions
+
+    //findByPk or findAll?
+
+    // async function 
+    // const answers = await db.Answer.findAll(quest{
+    //     where: {
+            
+    //     }
+    // });
+
+
+
+    // const users = await db.User.findByPk({
+    //     where: {
+    //         //get user email
+    //         userId: {  }
+    //     }
+    //  });
+
+    //  const answers = await db.Answer.findByPk({
+    //      where: {
+    //          //get answer value
+                //how do we pull all answers for a question/display on pug?
+    //      }
+    //  })
+
+    //res.json(searchQuestions);          
 }));
 
 

@@ -19,6 +19,7 @@ body {
     left: 0;
     position: fixed;
     align-items: center;
+    z-index: 2;
 }
 
 .nav a {
