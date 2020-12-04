@@ -14,7 +14,7 @@ div.center-column {
     top: 125px;
 }
 #expandDiv {
-    height: 50%;
+    height: fit-content;
     z-index: 2;
     position: relative;
     /* height: fit-contents
