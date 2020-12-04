@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let { questions } = foundQuestions;
 
       if (questions.length === 0) {
-        body.innerHtml = `<p> No results found! </p>`;
+        main.innerHtml = `<p> No results found! </p>`;
       } else {
         let questionsHTML = "ul";
         for (let question of questions) {
@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     </a>`;
         }
         questionsHTML += `</ul>`;
-        body.innerHTML = questionsHTML;
+        main.innerHTML = questionsHTML;
       }
     } catch (err) {
       console.error(err);

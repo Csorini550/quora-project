@@ -74,17 +74,6 @@ const loginValidators = [
 //******************** Helpers *************************
 //******************************************************
 
-const addAnswerCount = (questions) => {
-  for (let i = 0; i < questions.length; i++) {
-    let answerCount = 0;
-    let question = questions[i];
-    for (let j = 0; j < question.Answers.length; j++) {
-      answerCount++;
-    }
-    question.answerCount = answerCount;
-  }
-};
-
 function dateCreate(questions) {
   let months = {
     Jan: "01",
@@ -184,34 +173,6 @@ router.post(
     }
   })
 );
-
-// // Create new user
-// router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-//   const { email, firstName, lastName, password } = req.body;
-//   const user = db.User.build({
-//     email,
-//     firstName,
-//     lastName,
-//   });
-
-//   const validatorErrors = validationResult(req);
-//   if (validatorErrors.isEmpty()) {
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     user.hashedPassword = hashedPassword;
-//     await user.save();
-//     loginUser(req, res, user);
-//     res.redirect('/');
-//   } else {
-//     const errors = validatorErrors.array().map((error) => error.msg);
-//     res.render('user-register', {
-//       title: 'Register',
-//       user,
-//       errors,
-//       csrfToken: req.csrfToken(),
-//     });
-//   }
-
-// }));
 
 //******************************************************
 //******************** User Login **********************
@@ -334,7 +295,6 @@ router.get(
         group: ["Question.id", "User.id", "Answers.id"],
       });
 
-      addAnswerCount(questions);
       dateCreate(questions);
 
       res.render("myQuestion", { questions });
@@ -373,7 +333,6 @@ router.get(
         group: ["Question.id", "User.id", "Answers.id"],
       });
 
-      addAnswerCount(questions);
       dateCreate(questions);
 
       res.render("myQuestion", { questions });

@@ -22,17 +22,6 @@ const shortContent = (questions) => {
   }
 };
 
-const addAnswerCount = (questions) => {
-  for (let i = 0; i < questions.length; i++) {
-    let answerCount = 0;
-    let question = questions[i];
-    for (let j = 0; j < question.Answers.length; j++) {
-      answerCount++;
-    }
-    question.answerCount = answerCount;
-  }
-};
-
 const addQuestionLink = (questions) => {
   for (let i = 0; i < questions.length; i++) {
     questions[i].link = "/questions/" + questions[i].id;
@@ -82,7 +71,6 @@ router.get(
       group: ["Question.id", "User.id", "Answers.id"],
     });
 
-    addAnswerCount(questions);
     dateCreate(questions);
     shortContent(questions);
     addQuestionLink(questions);
