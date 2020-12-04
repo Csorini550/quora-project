@@ -17,7 +17,13 @@ div.center-column {
   right: 0;
   top: 125px;
 }
-
+#expandDiv {
+    height: fit-content;
+    z-index: 2;
+    position: relative;
+    /* height: fit-contents
+     */
+}
 div.center-column-item {
   background-color: white;
   margin: auto;
@@ -34,14 +40,10 @@ div#ask-question {
   margin: 0 0 25px 0;
 }
 
-div#answer-question {
-<<<<<<< HEAD
+div.answer-question {
   background-color: rgba(218, 253, 251, 0.9);
-=======
-    background-color:rgba(218, 253, 251, 0.9);
-    width: 500px;
-    height: 146px;
->>>>>>> 107ed2a8bb66b131d357291d49ace586e4d28310
+  width: 800px;
+  height: 146px;
 }
 
 div#user-question {
