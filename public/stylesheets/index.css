@@ -35,7 +35,13 @@ div#ask-question {
 }
 
 div#answer-question {
+<<<<<<< HEAD
   background-color: rgba(218, 253, 251, 0.9);
+=======
+    background-color:rgba(218, 253, 251, 0.9);
+    width: 500px;
+    height: 146px;
+>>>>>>> 107ed2a8bb66b131d357291d49ace586e4d28310
 }
 
 div#user-question {

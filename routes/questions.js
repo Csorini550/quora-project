@@ -90,7 +90,7 @@ router.post(
     } catch (err) {
       if (
         err.name === "SequelizeValidationError" ||
-        err.name === "SequelizeUniqueContraintError"
+        err.name === "SequelizeUniqueConstraintError"
       ) {
         const errors = err.error.map((error) => error.message);
         res.render("new-question", {
@@ -109,13 +109,16 @@ router.post(
 //******************************************************
 //******************** Delete Question *****************
 
-router.get(
-  "/:id/delete",
+router.post(
+  "/:id/delete", csrfProtection,
   asyncHandler(async (req, res, next) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await db.Question.findByPk(questionId);
 
     if (question) {
+      await db.Answer.destroy({
+        where: { questionId }
+      })
       await question.destroy();
       res.redirect("/");
     } else {
@@ -123,6 +126,17 @@ router.get(
     }
   })
 );
+
+//set up router .get res.render('delete-question')
+router.get("/:id/delete", csrfProtection, asyncHandler(async (req, res) => {
+  const questionId = parseInt(req.params.id, 10);
+  const question = await db.Question.findByPk(questionId);
+  res.render("delete-question", {
+    title: "Delete question",
+    question,
+    csrfToken: req.csrfToken(),
+  })
+}))
 
 //******************************************************
 //******************** Edit Question ********************
@@ -145,13 +159,28 @@ router.get(
   })
 );
 
+router.get(
+  "/:id",
+  csrfProtection,
+  questionValidators,
+  asyncHandler(async (req, res, next) => {
+    const { value } = req.body;
+    const questionId = parseInt(req.params.id, 10);
+
+    const question = await db.Question.findByPk(questionId);
+    return res.render("new-question", {
+      question, csrfToken: req.csrfToken()
+    }); //************ NEEDS NEW PUG FILE!!!!! ******************
+  })
+);
+
 router.post(
   "/:id",
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res, next) => {
     const { value } = req.body;
-    const userId = res.locals.user.id;
+    // const userId = res.locals.user.id;
     const questionId = parseInt(req.params.id, 10);
 
     const question = await db.Question(findByPk(questionId));
@@ -219,7 +248,7 @@ router.post(
     } catch (err) {
       if (
         err.name === "SequelizeValidationError" ||
-        err.name === "SequelizeUniqueContraintError"
+        err.name === "SequelizeUniqueConstraintError"
       ) {
         const errors = err.error.map((error) => error.message);
         res.render("new-answer", {
