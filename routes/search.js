@@ -15,7 +15,10 @@ router.get('/', asyncHandler(async(req, res, next) => {
         include: [db.User, db.Answer]
     });
 
+    console.log(searchQuestions);
 
+    res.render('search', {searchQuestions} );
+    
     // Model.findByPk(id, {
     //     include: [
     //       firstDataModel,
@@ -54,7 +57,6 @@ router.get('/', asyncHandler(async(req, res, next) => {
     //      }
     //  })
 
-    res.render('search', {searchQuestions} );
     //res.json(searchQuestions);          
 }));
 
