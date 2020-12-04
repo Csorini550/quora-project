@@ -1,5 +1,5 @@
 body {
-  background-image: url('/images/efe-kurnaz-RnCPiXixooY-unsplash.jpg');
+  background-image: url("/images/efe-kurnaz-RnCPiXixooY-unsplash.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -11,7 +11,6 @@ div#logo {
   margin: 10px;
 }
 
-
 /* ------ Form ------ */
 
 form {
@@ -19,7 +18,7 @@ form {
   width: 600px;
   color: white;
   border-radius: 5px;
-  box-shadow:  0px 0px 5px rgba(20, 20, 20, 0.5);
+  box-shadow: 0px 0px 5px rgba(20, 20, 20, 0.5);
   display: flex; /* labels, inputs, btn */
   align-items: center; /* labels, inputs, btn */
   flex-flow: column; /* labels, inputs, btn */
@@ -32,10 +31,10 @@ form {
 }
 
 label {
-font-size: 13px;
-font-weight: bold;
-display: block;
-margin: 10px 0;
+  font-size: 13px;
+  font-weight: bold;
+  display: block;
+  margin: 10px 0;
 }
 
 input {
@@ -115,7 +114,6 @@ div#no-account {
   right: 0;
   margin: auto;
 }
-
 
 /* ------ Links outside of form, account & photo credit ------ */
 
