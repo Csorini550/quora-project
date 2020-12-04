@@ -5,6 +5,10 @@ const { asyncHandler, csrfProtection } = require("../utils");
 var express = require("express");
 var router = express.Router();
 
+const logoutUser = (req, res) => {
+  req.session.auth = null;
+};
+
 const requireAuth = (req, res, next) => {
   if (!res.locals.authenticated) {
     return res.redirect("/users/login");
@@ -16,7 +20,7 @@ const requireAuth = (req, res, next) => {
 /* GET home page. */
 // router.get('/', function (req, res, next) {
 //   res.render('index', { questions: [], title: 'a/A Express Skeleton Home' });
-  
+
 // });
 
 
