@@ -33,10 +33,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         questionsHTML += `</ul>`;
         body.innerHTML = questionsHTML;
       }
-
-      // foundQuestions.forEach((question) => {
-
-      // });
     } catch (err) {
       console.error(err);
     }

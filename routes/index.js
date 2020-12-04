@@ -40,7 +40,7 @@ const addQuestionLink = (questions) => {
 };
 
 /* GET home page. */
-function convertDate(questions) {
+function dateCreate(questions) {
   let months = {
     Jan: "01",
     Feb: "02",
@@ -55,6 +55,7 @@ function convertDate(questions) {
     Nov: "11",
     Dec: "12",
   };
+
   for (let i = 0; i < questions.length; i++) {
     let question = questions[i];
     let createdAt = question.createdAt.toString();
@@ -82,7 +83,7 @@ router.get(
     });
 
     addAnswerCount(questions);
-    convertDate(questions);
+    dateCreate(questions);
     shortContent(questions);
     addQuestionLink(questions);
 

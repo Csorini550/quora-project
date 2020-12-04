@@ -71,6 +71,44 @@ const loginValidators = [
     .withMessage("Please provide a value for Password"),
 ];
 
+//******************** Helpers *************************
+//******************************************************
+
+const addAnswerCount = (questions) => {
+  for (let i = 0; i < questions.length; i++) {
+    let answerCount = 0;
+    let question = questions[i];
+    for (let j = 0; j < question.Answers.length; j++) {
+      answerCount++;
+    }
+    question.answerCount = answerCount;
+  }
+};
+
+function dateCreate(questions) {
+  let months = {
+    Jan: "01",
+    Feb: "02",
+    Mar: "03",
+    Apr: "04",
+    May: "05",
+    Jun: "06",
+    Jul: "07",
+    Aug: "08",
+    Sep: "09",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12",
+  };
+
+  for (let i = 0; i < questions.length; i++) {
+    let question = questions[i];
+    let createdAt = question.createdAt.toString();
+    let parts = createdAt.split(" ");
+    question.formattedDate = months[parts[1]] + "/" + parts[2] + "/" + parts[3];
+  }
+}
+
 //************ Routes **********************************
 
 //******************** User Registration ***************
@@ -297,7 +335,7 @@ router.get(
       });
 
       addAnswerCount(questions);
-      convertDate(questions);
+      dateCreate(questions);
 
       res.render("myQuestion", { questions });
     }
@@ -336,7 +374,7 @@ router.get(
       });
 
       addAnswerCount(questions);
-      convertDate(questions);
+      dateCreate(questions);
 
       res.render("myQuestion", { questions });
     }

@@ -1,0 +1,18 @@
+extends layout
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" async defer)
+  script(src="/javascripts/listener.js" type="module") // might throw an error and need public/listener
+block content
+  div.center-column
+      ul
+        each question in questions
+          a(href=`/questions/${question.id}`)
+            div.questions-block
+              div.questions-block__answers
+                li.questions-block__answers__count= question.answerCounts
+                li= question.answerCount
+                li Answers
