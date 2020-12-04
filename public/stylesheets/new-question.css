@@ -1,0 +1,12 @@
+#search-container {
+    width: 750px;
+    height: 1000px;
+    background-color: aqua;
+    position: relative;
+    top: 70px;
+    display: flex;
+    color: black;
+    flex-direction: column;
+    z-index: 1;
+}
+

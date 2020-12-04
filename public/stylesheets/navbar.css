@@ -12,6 +12,7 @@
     position: fixed;
     box-sizing: border-box;
     align-items: center;
+    z-index: 2;
 }
 
 body {
@@ -41,3 +42,4 @@ body {
     height: 15px;
     align-self: center;
 }
+
