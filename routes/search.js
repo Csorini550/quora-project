@@ -13,6 +13,50 @@ router.get('/', asyncHandler(async(req, res, next) => {
          }, 
         },
     });
+    
+    for (searchQuestions)
+    const answers = 
+
+    console.log(searchQuestions);
+
+    // Model.findByPk(id, {
+    //     include: [
+    //       firstDataModel,
+    //       {
+    //         model: secondDataModel,
+    //         include: [thirdDataModel]
+    //       }
+    //     ]
+    // });
+
+    //users and answers of the question 
+    //found in the searchQuestions
+
+    //findByPk or findAll?
+
+    // async function 
+    // const answers = await db.Answer.findAll(quest{
+    //     where: {
+            
+    //     }
+    // });
+
+
+
+    // const users = await db.User.findByPk({
+    //     where: {
+    //         //get user email
+    //         userId: {  }
+    //     }
+    //  });
+
+    //  const answers = await db.Answer.findByPk({
+    //      where: {
+    //          //get answer value
+                //how do we pull all answers for a question/display on pug?
+    //      }
+    //  })
+
     res.render('search', {searchQuestions} );
     //res.json(searchQuestions);          
 }));
