@@ -9,7 +9,7 @@ append head
 
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
-  script(src="/listener.js" type="module") // might throw an error and need public/listener
+  script(src="/public/listener.js" type="module") // might throw an error and need public/listener
 block content
   include navbar
   div(class="center-column")
@@ -20,16 +20,16 @@ block content
         div(id="buttons")
             button(type='submit' id="new-question" ) Submit question
             a(href='/' ) Cancel
+    //- div.center-column
+    //-   ul
+    //-     each question in questions
+    //-       a(href=question.link)
+    //-         div.center-column-item
     div(class="center-column-item answer-question")
       div(id="user-answer")
         span(id="user2") UserName2
       //- div(id="answer")
       //-   h2 What are the odds we get an A on this project?
       //-   p If we all buy him a bag of premium, ethically-sourced, single-origin coffee beans, we may have a chance to raise our grade an additional 10%...
-      div.center-column
-        ul
-          each question in questions
-            a(href=question.link)
-              div.center-column-item
     //- div.center-column
     //-     li.center-column-item= content
