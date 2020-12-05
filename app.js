@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
+const cors = require('cors');
 
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
@@ -15,6 +16,7 @@ const answersRouter = require("./routes/answers");
 const questionsRouter = require("./routes/questions");
 const searchRouter = require("./routes/search");
 const app = express();
+app.use(cors());
 
 // view engine setup
 app.set("view engine", "pug");
