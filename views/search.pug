@@ -1,28 +1,32 @@
-extends layout
+extends navbar
+
+include utils
 
 append head
   //- add page specific styles by appending to the head
+  //link(rel="stylesheet" href="/stylesheets/reset.css")
   link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
   //- add page specific js
   script(src="/javascripts/" type="module" defer)
   script(src="/javascript/public/listener.js" type="module") // might throw an error and need public/listener
 block content
-  div(class="center-column")
-    div(class="center-column-item" id="ask-question")
-      div(id="user-question")
-        span(id="user1") 
-      div(id="question")
-        h1
-        div(class="center-column-item" id="answer-question")
+  form(action='/questions/new' method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +field('Ask a question', 'question', '', 'text', 'Question...')
+      div(id="buttons")
+          button(type='submit' id="new-question" ) Submit question
+          a(href='/' ) Cancel
+  div(id="search-container")
+  h1 Search Results for "#{term}":
+  if searchQuestions.length
+    each question in searchQuestions
+      div(class="center-column-item" id="answer-question")
           div(id="user-answer")
-            span(id="user2")
-    div(class="center-column-item" id="answer-question")
-        div(id="user-answer") 
-          h1 Search Results
-          each question in searchQuestions
-            h2= question.value
-            //p tag w/ answers
-            div(id="search-result")
-              each answer in question.Answers
-                p= answer.value
-                //question.user
+              h1= question.value
+              div(id="search-result")
+                each answer in question.Answers
+                  p= answer.value
+  else
+    div(class="center-column-item" id="no-results")
+      div(id="nope") No Results Found
