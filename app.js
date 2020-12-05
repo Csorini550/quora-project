@@ -14,7 +14,10 @@ const usersRouter = require("./routes/users");
 const answersRouter = require("./routes/answers");
 const questionsRouter = require("./routes/questions");
 const searchRouter = require("./routes/search");
+const personalQAndARouter = require("./routes/personalQAndA");
 const app = express();
+
+const { restoreUser, requireAuth} = require("./auth");
 
 // view engine setup
 app.set("view engine", "pug");
@@ -40,12 +43,15 @@ app.use(
 
 // create Session table if it doesn't already exist
 store.sync();
-
+app.use(restoreUser);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+//app.use(requireAuth);
 app.use("/questions", questionsRouter);
 app.use("/answers", answersRouter);
 app.use("/api/search", searchRouter);
+//change route name
+app.use("/personal", personalQAndARouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

@@ -13,9 +13,11 @@ html
       img(src="/images/query-logo.svg" class='navbar-logo')
       a(href='/') Home
         i(class="fas fa-home")
-      a(href='/users/question') Questions
+      a(href=`/personal/questions/1`) Questions
+      //(href=`/personal/questions/${locals.user.id}`) Questions
         i(class="far fa-question-circle")
-      a(href='/users/answer') Answers
+      a(href=`/personal/answers/1`) Answers
+      //(href=`/personal/answers/${locals.user.id}`) Answers
         i(class="fas fa-book")
       form(id='search-bar' action='/api/search')
         input.search-input(type='text' name='term' placeholder='Search for a question!')
