@@ -12,26 +12,28 @@ append head
   script(src="/listener.js" type="module") // might throw an error and need public/listener
 block content
   include navbar
-  div(class="center-column")
+  div.center-column
     +validationErrorSummary(errors)
     form.question-form(action='/questions/new' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Ask a question', 'question', '', 'text', 'Question...')
-        div(id="buttons")
+        +field('Ask a question', 'value', '', 'text', 'Question...')
+        div.buttons
             button(type='submit' id="new-question" ) Submit question
             a(href='/' ) Cancel
-    div(class="center-column-item answer-question")
-      div(id="user-answer")
-        span(id="user2") UserName2
+    ul.questions-list
+      each question in questions
+        div.user-answer
+          span.user= question.User.email
+          p.question-list= question.value
+          div(id="search-result")
+            each answer in question.Answers
+              p= answer.value
+            //- a(href=question.link)
+              //- div.center-column-item
+        //- span(id="user2") UserName2
       //- div(id="answer")
       //-   h2 What are the odds we get an A on this project?
       //-   p If we all buy him a bag of premium, ethically-sourced, single-origin coffee beans, we may have a chance to raise our grade an additional 10%...
-      div.center-column
-        ul
-          each question in questions
-            //- a(href=question.link)
-            p= question.User.email
-            p= question.value
-              div.center-column-item
+      //- div.center-column
     //- div.center-column
     //-     li.center-column-item= content

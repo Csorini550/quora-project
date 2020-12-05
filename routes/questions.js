@@ -44,6 +44,7 @@ router.get(
   "/new",
   csrfProtection,
   asyncHandler(async (req, res) => {
+    //URGENT!!! Put below line in below if statement
     //res.locals.authenticated
     if (true) {
       res.render("new-question", {
@@ -83,8 +84,8 @@ router.post(
   asyncHandler(async (req, res, next) => {
     console.log("Why am i here")
     const { value } = req.body;
-    const userId = req.params.id
-
+    const userId = res.locals.user.id;
+    console.log(value);
     const question = db.Question.build({
       value,
       userId,
@@ -160,7 +161,7 @@ router.get("/:id/delete", csrfProtection, asyncHandler(async (req, res) => {
 //******************** Edit Question ********************
 
 router.get(
-  "/:id/edit",
+  "//edit",
   csrfProtection,
   asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);

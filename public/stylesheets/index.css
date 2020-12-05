@@ -4,7 +4,6 @@ body {
     rgb(252, 153, 105),
     rgb(238, 37, 138)
   );
-  /* background-image: linear-gradient(to bottom right, rgb(57, 115, 130), rgb(52, 65, 128)); */
   height: 100vh;
 }
 
@@ -23,55 +22,19 @@ div.center-column {
   height: fit-content;
   z-index: 2;
   position: relative;
-  /* height: fit-contents
-     */
-}
-div.center-column-item {
-  background-color: white;
-  margin: auto;
-  border: 2px solid rgb(52, 65, 128);
-  border-radius: 7px;
-  box-shadow: 2px 2px 7px rgb(32, 40, 80, 0.5);
-  display: flex;
-  flex-direction: column;
-  margin: 5px 0;
-  padding: 25px;
 }
 
-div#ask-question {
-  margin: 0 0 25px 0;
-}
-
-div.answer-question {
+div.user-answer {
   background-color: rgba(218, 253, 251, 0.9);
-  width: 800px;
-  height: 146px;
-}
-
-div#user-question {
-  color: rgba(55, 87, 127, 0.6);
-  display: flex;
-  flex-flow: column;
-  font-size: 12px;
-  padding: 0 0 12px 0;
-}
-
-div#user-answer {
+  width: 700px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 7px rgba(32, 40, 80, 0.5);
   color: rgb(55, 87, 127);
   display: flex;
   flex-flow: column;
   font-size: 12px;
-  padding: 0 0 10px 0;
-}
-
-div#question {
-  display: flex;
-  flex-flow: column;
-}
-
-div#answer {
-  display: flex;
-  flex-flow: column;
+  padding: 20px;
+  margin: 10px auto;
 }
 
 textarea::-webkit-input-placeholder {
@@ -80,10 +43,6 @@ textarea::-webkit-input-placeholder {
   font-weight: bold;
   letter-spacing: -0.5px;
   padding: auto 4px;
-}
-
-h1 {
-    /* ADD */
 }
 
 h2 {
@@ -96,16 +55,17 @@ h2 {
 p {
   color: rgb(55, 87, 127);
   font-size: 14px;
-  margin: 4px 0 0 0;
+  margin: 12px 0 0 0;
 }
 
-span#user1 {
-  font-size: 12px;
-  margin: 0 0 2px 0;
+p.question-list {
+  font-weight: bold;
+  font-size: 17;
 }
 
-span#user2 {
+span.user {
   font-size: 12px;
   font-weight: bold;
-  margin: 0 0 5px 0;
+  color: rgba(55, 87, 127, 0.6);
+  margin: 0 0 20px 0;
 }

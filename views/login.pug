@@ -13,7 +13,7 @@ block content
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Login', 'email', email, 'email', 'Email')
         +field(null, 'password', password, 'password', 'Password')
-        div(id="buttons")
+        div.buttons
             button(type='submit' id="login" ) Login
             button(type='submit' id="demo-login" ) Demo Login
             a(href='/' ) Cancel

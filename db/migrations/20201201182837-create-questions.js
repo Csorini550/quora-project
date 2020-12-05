@@ -10,7 +10,7 @@ module.exports = {
       },
       value: {
         allowNull: false,
-        type: Sequelize.STRING(500),
+        type: Sequelize.STRING(5000),
       },
       userId: {
         allowNull: false,

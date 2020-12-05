@@ -3,7 +3,7 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
     let clickCount = 0;
-    let answerDiv = document.querySelectorAll('.center-column-item');
+    let answerDiv = document.querySelectorAll('.user-answer');
     answerDiv.forEach(answer => {
         answer.addEventListener('click', (event) => {
             clickCount += 1;
