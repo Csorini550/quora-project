@@ -7,9 +7,9 @@ append head
 block content
     include navbar
     +validationErrorSummary(errors)
-    form(action=`/answer/edit/${answer.id}` method='post')
+    form(action=`/answers/${answer.id}/edit` method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Edit answer', 'answer', answer.value, 'text', 'Answer...')
+        +field('Edit answer', 'value', answer.value, 'text', 'Answer...')
         div#buttons
             button(type='submit') Update answer
-            a(href=`/answer/${answer.id}`) Cancel
+            a(href="/") Cancel
