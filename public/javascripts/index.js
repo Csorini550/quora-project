@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", (event) => {
+// window.addEventListener("DOMContentLoaded", (event) => {
   //   const searchBar = document.querySelector("#search-bar");
 
   //   searchBar.addEventListener("submit", async (event) => {
@@ -38,18 +38,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
   //     }
   //   });
 
-  const questionCreate = document.querySelector(".question-form");
+//   const questionCreate = document.querySelector(".question-form");
 
-  questionCreate.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const questionField = document.querySelector(".question-field").value;
+//   questionCreate.addEventListener("submit", async (e) => {
+//     e.preventDefault();
+//     const questionField = document.querySelector(".question-field").value;
 
-    const res = await fetch("/api/questions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ value: questionField }),
-    });
-  });
-});
+//     const res = await fetch("/questions", {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ value: questionField }),
+//     });
+//   });
+// });

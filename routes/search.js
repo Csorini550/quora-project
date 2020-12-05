@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { asyncHandler } = require("../utils");
+const { asyncHandler, csrfProtection } = require("../utils");
 const db = require("../db/models");
 const { Op } = require('sequelize');
 
 
-router.get('/', asyncHandler(async(req, res, next) => {
+router.get('/', csrfProtection, asyncHandler(async(req, res, next) => {
     const { term } = req.query;
     const searchQuestions = await db.Question.findAll({
         where: {
@@ -15,9 +15,14 @@ router.get('/', asyncHandler(async(req, res, next) => {
         include: [db.User, db.Answer]
     });
 
-    console.log(searchQuestions);
+    const empty = (searchQuestions) => {
+        if (!searchQuestions) {
+            return "no results found";
+        }
+    }
 
-    res.render('search', {searchQuestions} );
+
+    res.render('search', { searchQuestions, term, empty, token: req.csrfToken() } );
     
     // Model.findByPk(id, {
     //     include: [

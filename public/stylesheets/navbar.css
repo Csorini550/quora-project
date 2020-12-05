@@ -9,7 +9,7 @@ body {
     border-bottom: 3px solid rgb(52, 65, 128);
     box-shadow: 2px 2px 7px rgb(32, 40, 80, 0.5);
     overflow: hidden;
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(5, 1fr);
     margin: 0 auto;
     width: 100%;
@@ -20,6 +20,7 @@ body {
     position: fixed;
     align-items: center;
     z-index: 2;
+    box-sizing: border-box;
 }
 
 .nav a {
