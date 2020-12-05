@@ -78,7 +78,7 @@ router.get(
         {
           model: Answer,
           as: "Answers",
-          attributes: [[Answer.sequelize.fn("COUNT", "id"), "answerCount"]],
+          attributes: [[Answer.sequelize.fn("COUNT", "id"), "answerCount"], "value"],
         },
       ],
       order: [["createdAt", "DESC"]],
@@ -92,6 +92,7 @@ router.get(
 
     // console.log(questions);
     res.render("index", { questions, csrfToken: req.csrfToken() });
+    // res.json({ questions });
   })
 );
 

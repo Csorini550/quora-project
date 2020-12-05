@@ -12,7 +12,7 @@ block content
     form(action='/questions/new' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Ask a question', 'question', '', 'text', 'Question...')
-        div(id="buttons")
+        div.buttons
             button(type='submit' id="new-question" ) Submit question
             a(href='/' ) Cancel
     div(id="search-container")

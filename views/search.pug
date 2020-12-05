@@ -4,17 +4,17 @@ include utils
 
 append head
   //- add page specific styles by appending to the head
-  //link(rel="stylesheet" href="/stylesheets/reset.css")
-  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/reset.css")
   link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
+  link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/" type="module" defer)
   script(src="/javascript/public/listener.js" type="module") // might throw an error and need public/listener
 block content
-  form(action='/questions/new' method='post')
+  form.question-form(action='/questions/new' method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
       +field('Ask a question', 'question', '', 'text', 'Question...')
-      div(id="buttons")
+      div.buttons
           button(type='submit' id="new-question" ) Submit question
           a(href='/' ) Cancel
   div(id="search-container")
@@ -22,7 +22,8 @@ block content
   if searchQuestions.length
     each question in searchQuestions
       div(class="center-column-item" id="answer-question")
-          div(id="user-answer")
+          div.user-answer
+              span.user= question.User.email
               h1= question.value
               div(id="search-result")
                 each answer in question.Answers

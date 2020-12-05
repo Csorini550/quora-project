@@ -11,6 +11,6 @@ block content
   form(action=`/questions/${question.id}/edit` method='post')
     input(type='hidden' name='_csrf' value=csrfToken)
     +field('Edit question', 'value', question.value, 'text', 'Question...')
-    div#buttons
+    div.buttons
       button(type='submit') Update question
       a(href=`/questions/${question.id}`) Cancel
