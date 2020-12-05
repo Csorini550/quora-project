@@ -19,6 +19,14 @@ const questionValidators = [
     .withMessage("Question must be no longer than 500 characters."),
 ];
 
+const answerValidators = [
+  check("value")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter an Answer")
+    .isLength({ max: 255 })
+    .withMessage("The answer must be no longer that 500 characters long"),
+];
+
 router.get(
   "/:id/edit",
   csrfProtection,
@@ -33,8 +41,27 @@ router.get(
   })
 );
 
+// router.post('/:id/edit',
+//   csrfProtection,
+//   answerValidators,
+//   asyncHandler(async (req, res) => {
+//     const { value } = req.body;
+//     const answerId = parseInt(req.params.id, 10);
+//     const answerEdit = await db.Answer.findByPk(answerId);
+//     const answer = { value };
+//     await answerEdit.update(answer);
+//     res.render('edit-answer', {
+//       title: 'Edit answer',
+//       answer: { ...answer, id: answerId },
+//       csrfToken: req.csrfToken(),
+//     });
+//   })
+// );
+
+// ADD GET REQUEST FOR /:ID  *************************
+
 router.post(
-  "/:id",
+  "/:id/edit",
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res, next) => {
@@ -42,26 +69,41 @@ router.post(
     const answerId = parseInt(req.params.id, 10);
     const answer = await db.Answer.findByPk(answerId);
     if (answer) {
-      await answer.update({ value: value });
-      res.redirect("`/questions/${answer.questionId}`");
+      answer.value = value;
+      await answer.save();
+      res.redirect(`/questions/${answer.questionId}`);
     } else {
       next(questionNotFoundError(answerId));
     }
   })
 );
 
+//**************************** */ COME BACK TO THIS ************
 router.post(
   "/:id/delete",
+  csrfProtection,
+  questionValidators,
   asyncHandler(async (req, res, next) => {
     const answerId = parseInt(req.params.id, 10);
     const answer = await db.Answer.findByPk(answerId);
+
     if (answer) {
-      await answer.destroy({ value: value });
-      res.redirect("`/questions/${answer.questionId}`");
+      await answer.destroy();
+      res.redirect("/");
     } else {
       next(questionNotFoundError(answerId));
     }
   })
 );
+
+router.get("/:id/delete", csrfProtection, asyncHandler(async (req, res) => {
+  const answerId = parseInt(req.params.id, 10);
+  const answer = await db.Answer.findByPk(answerId);
+  res.render("delete-answer", {
+    title: "Delete answer",
+    answer,
+    csrfToken: req.csrfToken(),
+  })
+}))
 
 module.exports = router;

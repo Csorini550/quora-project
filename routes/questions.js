@@ -177,6 +177,24 @@ router.get(
   })
 );
 
+router.post(
+  "/:id/edit",
+  csrfProtection,
+  questionValidators,
+  asyncHandler(async (req, res, next) => {
+    const { value } = req.body;
+    const questionId = parseInt(req.params.id, 10);
+    const question = await db.Question.findByPk(questionId);
+    if (question) {
+      question.value = value;
+      await question.save();
+      res.redirect(`/questions/${questionId}`);
+    } else {
+      next(questionNotFoundError(questionId));
+    }
+  })
+);
+
 router.get(
   "/:id",
   csrfProtection,
@@ -202,7 +220,6 @@ router.post(
     const questionId = parseInt(req.params.id, 10);
 
     const question = await db.Question.findByPk(questionId);
-
     if (question) {
       await question.update({ value: value });
       res.redirect(`/questions/${questionId}`);
