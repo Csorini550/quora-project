@@ -1,4 +1,5 @@
 const db = require("../db/models");
+// URGENT!!! sequelize not being read??? (Saturday)
 const { Answer, Question, User, sequelize } = db;
 const { asyncHandler, csrfProtection } = require("../utils");
 

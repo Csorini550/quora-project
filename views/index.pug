@@ -16,7 +16,7 @@ block content
     +validationErrorSummary(errors)
     form.question-form(action='/questions/new' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Ask a question', 'question', '', 'text', 'Question...')
+        +field('Ask a question', 'value', '', 'text', 'Question...')
         div.buttons
             button(type='submit' id="new-question" ) Submit question
             a(href='/' ) Cancel
