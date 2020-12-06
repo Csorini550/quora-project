@@ -53,39 +53,40 @@ const router = express.Router();
 // }
 
 router.get(
-    "/questions/:id",
-    csrfProtection,
-    asyncHandler(async (req, res) => {
-        const userId = parseInt(req.params.id, 10);
-        const questions = await db.Question.findAll({
-            include: [
-                {
-                    model: User, as: "User",
-                    where: {
-                        id: userId
-                    },
-                    attributes: ["email"]
-                },
+  "/questions/:id",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const userId = parseInt(req.params.id, 10);
+    const questions = await db.Question.findAll({
+      include: [
+        {
+          model: User,
+          as: "User",
+          where: {
+            id: userId,
+          },
+          attributes: ["email"],
+        },
 
-                {
-                    model: Answer,
-                    as: "Answers",
-                    attributes: [[Answer.sequelize.fn("COUNT", "id"), "answerCount"]],
-                },
-            ],
-            order: [["createdAt", "DESC"]],
-            attributes: ["id", "value", "createdAt"],
-            group: ["Question.id", "User.id", "Answers.id"],
-        });
+        {
+          model: Answer,
+          as: "Answers",
+          attributes: [[Answer.sequelize.fn("COUNT", "id"), "answerCount"]],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+      attributes: ["id", "value", "createdAt"],
+      group: ["Question.id", "User.id", "Answers.id"],
+    });
 
-        //dateCreate(questions);
-        //shortContent(questions);
-        // addQuestionLink(questions);
+    //dateCreate(questions);
+    //shortContent(questions);
+    // addQuestionLink(questions);
 
-        // console.log(questions);
+    // console.log(questions);
 
-        res.render("questions", { questions, csrfToken: req.csrfToken() });
-    })
+    res.render("questions", { questions, csrfToken: req.csrfToken() });
+  })
 );
 
 // router.get('/', (req, res) => {
@@ -93,31 +94,39 @@ router.get(
 // })
 
 router.get(
-    "/answers/:id",
-    csrfProtection,
-    asyncHandler(async (req, res) => {
-        const userId = parseInt(req.params.id, 10);
-        const questions = await db.Question.findByPk((userId), {
-            include: [
-                { model: User, as: "User", attributes: ["email"] },
-                {
-                    model: Answer,
-                    as: "Answers",
-                    attributes: [[Answer.sequelize.fn("COUNT", "id"), "answerCount"]],
-                },
-            ],
-            order: [["createdAt", "DESC"]],
-            attributes: ["id", "value", "createdAt"],
-            group: ["Question.id", "User.id", "Answers.id"],
-        });
+  "/answers/:id",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const userId = parseInt(req.params.id, 10);
+    const questions = await db.Answers.findAll({
+      include: [
+        {
+          model: User,
+          as: "User",
+          where: {
+            id: userId,
+          },
+          attributes: ["email"],
+        },
 
-        // dateCreate(questions);
-        // shortContent(questions);
-        // addQuestionLink(questions);
+        {
+          model: Answer,
+          as: "Answers",
+          attributes: [[Answer.sequelize.fn("COUNT", "id"), "answerCount"]],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+      attributes: ["id", "value", "createdAt"],
+      group: ["Question.id", "User.id", "Answers.id"],
+    });
 
-        // console.log(questions);
-        res.render("answers", { questions, csrfToken: req.csrfToken() });
-    })
+    // dateCreate(questions);
+    // shortContent(questions);
+    // addQuestionLink(questions);
+
+    // console.log(questions);
+    res.render("answers", { questions, csrfToken: req.csrfToken() });
+  })
 );
 
 module.exports = router;

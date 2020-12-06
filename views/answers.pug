@@ -1,0 +1,27 @@
+
+include utils
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/reset.css")
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
+
+  //- add page specific js
+  script(src="/javascripts/personalQAndA" type="module" defer)
+  script(src="/listener.js" type="module") // might throw an error and need public/listener
+block content
+  include navbar
+  div.center-column
+    +validationErrorSummary(errors)
+    form.question-form(action='/answers/new' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('Ask a question', 'value', '', 'text', 'Question...')
+        div.buttons
+            button(type='submit' id="new-question" ) Submit question
+            a(href='/' ) Cancel
+    ul.questions-list
+        each answer in answers
+            div.user-answer
+             span.user= answers.User.email
+             p.question-list= answers.value
