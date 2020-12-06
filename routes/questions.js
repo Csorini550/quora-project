@@ -54,7 +54,6 @@ router.get(
     } else {
       // is this being used?
       res.redirect("/users/login");
-
     }
   })
 );
@@ -111,15 +110,16 @@ router.post(
 //******************** Delete Question *****************
 
 router.post(
-  "/:id/delete", csrfProtection,
+  "/:id/delete",
+  csrfProtection,
   asyncHandler(async (req, res, next) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await db.Question.findByPk(questionId);
 
     if (question) {
       await db.Answer.destroy({
-        where: { questionId }
-      })
+        where: { questionId },
+      });
       await question.destroy();
       res.redirect("/");
     } else {
@@ -129,15 +129,19 @@ router.post(
 );
 
 //set up router .get res.render('delete-question')
-router.get("/:id/delete", csrfProtection, asyncHandler(async (req, res) => {
-  const questionId = parseInt(req.params.id, 10);
-  const question = await db.Question.findByPk(questionId);
-  res.render("delete-question", {
-    title: "Delete question",
-    question,
-    csrfToken: req.csrfToken(),
+router.get(
+  "/:id/delete",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const questionId = parseInt(req.params.id, 10);
+    const question = await db.Question.findByPk(questionId);
+    res.render("delete-question", {
+      title: "Delete question",
+      question,
+      csrfToken: req.csrfToken(),
+    });
   })
-}))
+);
 
 //******************************************************
 //******************** Edit Question ********************
@@ -149,8 +153,10 @@ router.get(
     const questionId = parseInt(req.params.id, 10);
     const question = await db.Question.findByPk(questionId);
 
-    if (!res.locals.authenticated) { //added !
-      return res.render("edit-question", { //made changes here added return
+    if (!res.locals.authenticated) {
+      //added !
+      return res.render("edit-question", {
+        //made changes here added return
         question,
         csrfToken: req.csrfToken(),
       });
@@ -188,7 +194,8 @@ router.get(
 
     const question = await db.Question.findByPk(questionId);
     return res.render("new-question", {
-      question, csrfToken: req.csrfToken()
+      question,
+      csrfToken: req.csrfToken(),
     }); //************ NEEDS NEW PUG FILE!!!!! ******************
   })
 );

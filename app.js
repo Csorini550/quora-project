@@ -17,7 +17,7 @@ const searchRouter = require("./routes/search");
 const personalQAndARouter = require("./routes/personalQAndA");
 const app = express();
 
-const { restoreUser, requireAuth} = require("./auth");
+const { restoreUser, requireAuth } = require("./auth");
 
 // view engine setup
 app.set("view engine", "pug");
@@ -43,10 +43,10 @@ app.use(
 
 // create Session table if it doesn't already exist
 store.sync();
-app.use(restoreUser);
+// app.use(restoreUser);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-//app.use(requireAuth);
+// app.use(requireAuth);
 app.use("/questions", questionsRouter);
 app.use("/answers", answersRouter);
 app.use("/api/search", searchRouter);
@@ -60,6 +60,10 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
+  if (err.status === 404) {
+    res.render("404");
+    return;
+  }
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
