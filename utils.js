@@ -24,4 +24,20 @@ const handleValidationErrors = (req, res, next) => {
   next();
 };
 
+/// loop for divs
+// let answerDiv = document.querySelectorAll('.user-answer');
+// let currentLikes = 0
+// answerDiv.addEventListener('click', event => {
+//   curentLikes += 1;
+
+// })
+
+// const likeButton = () => {
+
+// }
+
+// const dislikeButton = () => {
+
+// }
+
 module.exports = { asyncHandler, handleValidationErrors, csrfProtection };

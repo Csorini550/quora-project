@@ -59,6 +59,21 @@ router.get(
   })
 );
 
+// router.post(
+//   "/new",
+//   csrfProtection,
+//   questionValidators,
+//   asyncHandler(async (req, res, next) => {
+//     const { value } = req.body;
+//     const userId = res.locals.user.id;
+
+//     const question = db.Question.create({
+//       value,
+//       userId,
+//     });
+//     res.render('index')
+//   })
+// )
 //******************************************************
 //******************** New Question ********************
 
@@ -67,6 +82,7 @@ router.post(
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res, next) => {
+    console.log("Why am i here")
     const { value } = req.body;
     const userId = res.locals.user.id;
     console.log(value);
@@ -76,6 +92,7 @@ router.post(
     });
 
     const validationErrors = validationResult(req);
+    console.log("PLEASE GOD")
     try {
       if (validationErrors.isEmpty()) {
         await question.save();
@@ -89,6 +106,7 @@ router.post(
         });
       }
     } catch (err) {
+      console.log("i was here!!!")
       if (
         err.name === "SequelizeValidationError" ||
         err.name === "SequelizeUniqueConstraintError"
@@ -205,7 +223,7 @@ router.post(
     const question = await db.Question.findByPk(questionId);
     if (question) {
       await question.update({ value: value });
-      res.redirect(`/questions/${question.id}`);
+      res.redirect(`/questions/${questionId}`);
     } else {
       next(questionNotFoundError(questionId));
     }

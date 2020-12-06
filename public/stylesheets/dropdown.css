@@ -1,0 +1,64 @@
+
+/* Style The Dropdown Button */
+.dropButton:hover {
+     background-image: linear-gradient(
+    to bottom right,
+    rgb(252, 153, 105),
+    rgb(238, 37, 138)
+  );
+
+  
+  /* height: 100vh; */
+}
+
+.dropButton {
+    background-color: rgb(232, 255, 254);
+}
+.fa-user-ninja {
+    background-color: rgb(55, 87, 127);
+    border-radius: 2rem;
+    /* align-items: center; */
+    /* display: flex; */
+}
+
+/* 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9; 
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;  
+    display: block;
+}
+
+
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+
+.dropdown:hover .dropdown-content {
+  
+display: block;
+}
+
+
+.dropdown:hover .dropButton {
+  background-color: #3e8e41;
+} */
+

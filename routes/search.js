@@ -5,12 +5,13 @@ const db = require("../db/models");
 const { Op } = require('sequelize');
 
 
-router.get('/', csrfProtection, asyncHandler(async(req, res, next) => {
+router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
     const { term } = req.query;
     const searchQuestions = await db.Question.findAll({
         where: {
-            value: { [Op.iLike]: '%' + term + '%', 
-         }, 
+            value: {
+                [Op.iLike]: '%' + term + '%',
+            },
         },
         include: [db.User, db.Answer]
     });
@@ -22,8 +23,8 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next) => {
     }
 
 
-    res.render('search', { searchQuestions, term, empty, token: req.csrfToken() } );
-    
+    res.render('search', { searchQuestions, term, empty, token: req.csrfToken() });
+
     // Model.findByPk(id, {
     //     include: [
     //       firstDataModel,
@@ -42,7 +43,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next) => {
     // async function 
     // const answers = await db.Answer.findAll(quest{
     //     where: {
-            
+
     //     }
     // });
 
@@ -58,7 +59,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next) => {
     //  const answers = await db.Answer.findByPk({
     //      where: {
     //          //get answer value
-                //how do we pull all answers for a question/display on pug?
+    //how do we pull all answers for a question/display on pug?
     //      }
     //  })
 

@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
+const cors = require('cors');
 
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
@@ -16,6 +17,7 @@ const questionsRouter = require("./routes/questions");
 const searchRouter = require("./routes/search");
 const personalQAndARouter = require("./routes/personalQAndA");
 const app = express();
+app.use(cors());
 
 const { restoreUser, requireAuth } = require("./auth");
 
