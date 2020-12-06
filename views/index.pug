@@ -28,12 +28,6 @@ block content
           div(id="search-result")
             each answer in question.Answers
               p= answer.value
-            //- a(href=question.link)
-              //- div.center-column-item
-        //- span(id="user2") UserName2
-      //- div(id="answer")
-      //-   h2 What are the odds we get an A on this project?
-      //-   p If we all buy him a bag of premium, ethically-sourced, single-origin coffee beans, we may have a chance to raise our grade an additional 10%...
-      //- div.center-column
-    //- div.center-column
-    //-     li.center-column-item= content
+              button(type='submit' class="add-answer" ) Add answer
+              a(href="/answers/1")
+              //- NEED TO FIX LINE 32 ABOVE!!!!!!!

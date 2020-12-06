@@ -1,25 +1,42 @@
 
+div.dropdown {
+    height: 50px;
+}
+
 /* Style The Dropdown Button */
+.dropButton {
+    background-color: rgb(232, 255, 254);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    border: none;
+    border-radius: 0;
+    border-left: 1px solid rgb(186, 223, 221);
+}
+
 .dropButton:hover {
-     background-image: linear-gradient(
+    /* background-image: linear-gradient(
     to bottom right,
     rgb(252, 153, 105),
     rgb(238, 37, 138)
-  );
-
-  
-  /* height: 100vh; */
+  ); */
+  background-color: rgba(55, 87, 127, 0.6);
+    border: none;
+    border-radius: 0;
 }
 
-.dropButton {
-    background-color: rgb(232, 255, 254);
-}
 .fa-user-ninja {
     background-color: rgb(55, 87, 127);
     border-radius: 2rem;
-    /* align-items: center; */
-    /* display: flex; */
+    width: 40px;
+    height: 40px;
 }
+
+/* .fa-user-ninja:hover {
+    background-color: rgb(244, 95, 155);
+} */
+
 
 /* 
 .dropdown {
