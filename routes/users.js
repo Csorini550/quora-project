@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator");
 
 const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
-const { User, sequelize } = db;
+const { Answer, User, sequelize } = db;
 const { loginUser, logoutUser } = require("../auth");
 
 const router = express.Router();
