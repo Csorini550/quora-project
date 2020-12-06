@@ -8,8 +8,6 @@ append head
     link(rel="stylesheet" href="/stylesheets/index.css")
     link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
 
-include navbar
-
 block content  
   +validationErrorSummary(errors)
   div.center-column
@@ -18,4 +16,4 @@ block content
       +field('Edit question', 'value', question.value, 'text', 'Question...')
       div.buttons
         button(type='submit') Update question
-        a(href=`/questions/${question.id}`) Cancel
+        a(href=`/`) Cancel

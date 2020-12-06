@@ -173,7 +173,7 @@ router.get(
         csrfToken: req.csrfToken(),
       });
     } else {
-      res.redirect("/users/login");
+      res.redirect("/");
     }
   })
 );

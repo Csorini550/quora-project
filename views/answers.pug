@@ -21,12 +21,15 @@ block content
             div.buttons
                 button(type='submit' id="new-answer" ) Submit answer
                 a(href='/' ) Cancel
-    ul.questions-list
-        div.user-answer
+        ul.questions-list
             each question in answers
-                //- span(class='user')= answer.User.email
-                p.question-list= question.value
-                div(id="search-result")
-                    each answer in question.Answers
-                        p= answer.value
+                div.user-answer
+                    //- span(class='user')= answer.User.email
+                    p.question-list= question.value
+                    div(id="search-result")
+                        each answer in question.Answers
+                            p= answer.value
+                            div#smaller
+                                a.style-button#make-smaller(href=`/answers/${answer.id}/edit`) Edit answer
+                                a.style-button#make-smaller(href=`/answers/${answer.id}/delete`) Delete answer
                         
