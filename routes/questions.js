@@ -161,7 +161,7 @@ router.get("/:id/delete", csrfProtection, asyncHandler(async (req, res) => {
 //******************** Edit Question ********************
 
 router.get(
-  "//edit",
+  "/:id/edit",
   csrfProtection,
   asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
@@ -189,7 +189,7 @@ router.post(
     if (question) {
       question.value = value;
       await question.save();
-      res.redirect(`/questions/${questionId}`);
+      res.redirect(`/`);
     } else {
       next(questionNotFoundError(questionId));
     }

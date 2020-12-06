@@ -23,5 +23,8 @@ block content
     ul.questions-list
         each question in questions
             div.user-answer
-             span.user= question.User.email
-             p.question-list= question.value
+              span.user= question.User.email
+              p.question-list= question.value
+              div#smaller
+                  a.style-button#make-smaller(href=`/questions/${question.id}/edit`) Edit
+                  a.style-button#make-smaller(href=`/questions/${question.id}/delete`) Delete

@@ -10,8 +10,12 @@ append head
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
   script(src="/listener.js" type="module") // might throw an error and need public/listener
+  script(src="/surprise.js" type="module")
 block content
   include navbar
+  div#background-gradient-1
+  div#background-gradient-2
+  div#surprise-div
   div.center-column
     +validationErrorSummary(errors)
     form.question-form(action='/questions/new' method='post')

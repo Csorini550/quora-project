@@ -36,7 +36,7 @@ router.get(
     if (!res.locals.authenticated) {
       return res.render("edit-answer", { answer, csrfToken: req.csrfToken() });
     } else {
-      res.redirect("/login");
+      res.redirect("/");
     }
   })
 );
@@ -107,7 +107,7 @@ router.post(
     if (answer) {
       answer.value = value;
       await answer.save();
-      res.redirect(`/questions/${answer.questionId}`);
+      res.redirect(`/`);
     } else {
       next(questionNotFoundError(answerId));
     }
