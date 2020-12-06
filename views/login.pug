@@ -5,6 +5,7 @@ include utils.pug
 append head
     script(src="/javascripts/demo.js" type="module" async defer)
     link(rel="stylesheet" href="/stylesheets/forms.css")
+    link(rel="stylesheet" href="/stylesheets/error.css")
 
 block content
     +validationErrorSummary(errors)

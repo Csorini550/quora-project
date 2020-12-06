@@ -1,0 +1,24 @@
+div.alert {
+  background-color: white;
+  margin: auto;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  padding: 20px;
+  border-radius: 7px;
+  color: red;
+  box-shadow: 2px 2px 7px rgba(32, 40, 80, 0.5);
+}
+
+ul.error {
+  list-style: none;
+}
+
+#error {
+  font-weight: bold;
+  margin-bottom: 10px;
+}

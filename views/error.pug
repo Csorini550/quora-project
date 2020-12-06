@@ -1,6 +1,11 @@
 extends layout
 
+append head
+    link(rel="stylesheet" href="/stylesheets/error.css")
+
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  div.errors
+    //- h1.error= message
+    //- h2.error= error.status
+    //- h3.error= #{error.stack}
+    //- Does this need to be 'pre'
