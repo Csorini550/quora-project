@@ -12,4 +12,6 @@ block content
         +field('Edit answer', 'value', answer.value, 'text', 'Answer...')
         div.buttons
             button(type='submit') Update answer
+    form(action=`/answers/${answer.id}/delete` method="post")        
+            button.delete-answer(type="submit") Delete Answer
             a(href="/") Cancel
