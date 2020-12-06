@@ -17,7 +17,7 @@ const questionsRouter = require("./routes/questions");
 const searchRouter = require("./routes/search");
 const personalQAndARouter = require("./routes/personalQAndA");
 const app = express();
-app.use(cors());
+// app.use(cors());
 
 const { restoreUser, requireAuth } = require("./auth");
 
@@ -27,7 +27,7 @@ app.set("view engine", "pug");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser(sessionSecret));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // set up session middleware
