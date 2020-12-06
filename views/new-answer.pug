@@ -11,7 +11,7 @@ block content
     +validationErrorSummary(errors)
     form(action='/answers/new' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Answer a question', 'answer', answer.value, 'text', 'Answer...')
+        +field('Answer a question', 'value', answer.value, 'text', 'Answer...')
         div.buttons
             button(type='submit' id="new-answer" ) Submit answer
             a(href='/' ) Cancel
