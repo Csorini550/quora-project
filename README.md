@@ -1,6 +1,7 @@
 # Query
 
-<img src="/images/query-logo.svg"
+<img src="./images/query-logo.svg" align="center" alt="Never Forget logo" width="300">
+<br>
 
 # Express Project Skeleton
 
