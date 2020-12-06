@@ -41,6 +41,42 @@ router.get(
   })
 );
 
+//**************************
+
+router.get(
+  "/:id",
+  csrfProtection,
+  questionValidators,
+  asyncHandler(async (req, res, next) => {
+    const { value } = req.body;
+    const answerId = parseInt(req.params.id, 10);
+
+    const answer = await db.Answer.findByPk(answerId);
+    return res.render("new-answer", {
+      answer, csrfToken: req.csrfToken()
+    }); //************ NEEDS NEW PUG FILE!!!!! ******************
+  })
+);
+
+router.post(
+  "/:id",
+  csrfProtection,
+  questionValidators,
+  asyncHandler(async (req, res, next) => {
+    const { value } = req.body;
+    // const userId = res.locals.user.id;
+    const answerId = parseInt(req.params.id, 10);
+
+    const answer = await db.Answer.findByPk(answerId);
+    if (answer) {
+      await answer.update({ value: value });
+      res.redirect(`/answer/${answerId}`);
+    } else {
+      next(questionNotFoundError(answerId));
+    }
+  })
+);
+
 // router.post('/:id/edit',
 //   csrfProtection,
 //   answerValidators,

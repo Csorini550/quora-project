@@ -22,10 +22,10 @@ html
       //(href=`/personal/answers/${locals.user.id}`) Answers
       form(id='search-bar' action='/api/search')
         input.search-input(type='text' name='term' placeholder='Search for a question!')
-      div(class= 'dropdown') Logout
-          button(onClick='logoutUser()' class='dropButton')
+      div(class='dropdown')
+          button(onClick='logoutUser()' class='dropButton' title="Log Out")
             <i class="fas fa-user-ninja"></i>
-            div(style='cursor:help') Logout
+            //- div(style='cursor:help')
     block content
           //- select(id="myDropdown" class="dropdown-content")
           //-   a(href='/users/login') Logout

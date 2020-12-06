@@ -33,7 +33,7 @@ div.user-answer {
   display: flex;
   flex-flow: column;
   font-size: 12px;
-  padding: 20px;
+  padding: 30px 50px;
   margin: 10px auto;
 }
 
@@ -55,7 +55,7 @@ h2 {
 p {
   color: rgb(55, 87, 127);
   font-size: 14px;
-  margin: 12px 0 0 0;
+  margin: 20px 0 0 0;
 }
 
 p.question-list {
@@ -68,4 +68,8 @@ span.user {
   font-weight: bold;
   color: rgba(55, 87, 127, 0.6);
   margin: 0 0 20px 0;
+}
+
+button.add-answer {
+  margin-top: 20px;
 }
