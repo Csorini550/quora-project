@@ -1,0 +1,38 @@
+
+include utils
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/reset.css")
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
+
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" defer)
+  script(src="/listener.js" type="module") // might throw an error and need public/listener
+block content
+  include navbar
+  div.center-column
+    +validationErrorSummary(errors)
+    form.question-form(action='/questions/new' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('Ask a question', 'value', '', 'text', 'Question...')
+        div.buttons
+            button(type='submit' id="new-question" ) Submit question
+            a(href='/' ) Cancel
+    ul.questions-list
+        div.user-answer
+          span.user= question.User.email
+          p.question-list= question.value
+          div(id="search-result")
+            each answer in question.Answers
+              p= answer.value
+            //- a(href=question.link)
+              //- div.center-column-item
+        //- span(id="user2") UserName2
+      //- div(id="answer")
+      //-   h2 What are the odds we get an A on this project?
+      //-   p If we all buy him a bag of premium, ethically-sourced, single-origin coffee beans, we may have a chance to raise our grade an additional 10%...
+      //- div.center-column
+    //- div.center-column
+    //-     li.center-column-item= content
