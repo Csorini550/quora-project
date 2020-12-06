@@ -57,9 +57,16 @@ router.get(
     csrfProtection,
     asyncHandler(async (req, res) => {
         const userId = parseInt(req.params.id, 10);
-        let questions = await db.Question.findByPk((userId), {
+        const questions = await db.Question.findAll({
             include: [
-                { model: User, as: "User", attributes: ["email"] },
+                {
+                    model: User, as: "User",
+                    where: {
+                        id: userId
+                    },
+                    attributes: ["email"]
+                },
+
                 {
                     model: Answer,
                     as: "Answers",
@@ -76,16 +83,21 @@ router.get(
         // addQuestionLink(questions);
 
         // console.log(questions);
+
         res.render("questions", { questions, csrfToken: req.csrfToken() });
     })
 );
+
+// router.get('/', (req, res) => {
+//     res.send('We did it!')
+// })
 
 router.get(
     "/answers/:id",
     csrfProtection,
     asyncHandler(async (req, res) => {
         const userId = parseInt(req.params.id, 10);
-        let questions = await db.Question.findByPk((userId), {
+        const questions = await db.Question.findByPk((userId), {
             include: [
                 { model: User, as: "User", attributes: ["email"] },
                 {

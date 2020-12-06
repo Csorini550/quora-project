@@ -242,10 +242,10 @@ router.post(
 //******************************************************
 
 router.post("/logout", (req, res, next) => {
-  logoutUser(req);
+  logoutUser(req, res);
   return req.session.save((err) => {
     if (!err) {
-      return res.redirect("/");
+      return res.redirect("/users/register");
     } else {
       next(err);
     }
