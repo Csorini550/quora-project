@@ -1,11 +1,11 @@
 body {
-  background-image: linear-gradient(to bottom right, rgb(252, 153, 105), rgb(238, 37, 138));
+  /* background-image: linear-gradient(to bottom right, rgb(252, 153, 105), rgb(238, 37, 138)); */
   /* background-image: linear-gradient(
     to bottom right,
     rgb(57, 115, 130),
     rgb(52, 65, 128)
   ); */
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 /* ------ Form ------ */
@@ -59,7 +59,8 @@ div.buttons {
   justify-content: space-between;
 }
 
-button {
+button,
+.style-button {
   border: 1px solid rgba(87, 126, 173, 0.6);
   border-radius: 3px;
   background-color: rgba(55, 87, 127, 0.6);
@@ -70,18 +71,37 @@ button {
   margin: 0 0 10px 0;
 }
 
-button:hover {
+button:hover,
+.style-button:hover {
   border: 1px solid rgba(87, 126, 173, 1);
   background-color: rgba(55, 87, 127, 1);
   cursor: pointer;
 }
 
-button:active {
+button:active,
+.style-button:active {
   transform: translateY(0.5px);
+}
+
+div#smaller {
+  display: flex;
+  flex-direction: row;
+}
+
+#make-smaller {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  margin: 20px 10px 10px 0;
 }
 
 a {
   font-size: 13px;
   color: rgba(87, 126, 173, 0.8);
   text-decoration: none;
+}
+
+h2.delete {
+  margin: 20px;
+  
 }

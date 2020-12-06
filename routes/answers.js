@@ -30,14 +30,15 @@ const answerValidators = [
 router.get(
   "/:id/edit",
   csrfProtection,
-  asyncHandler(async (req, res, next) => {
+  asyncHandler(async (req, res) => {
     const answerId = parseInt(req.params.id, 10);
     const answer = await db.Answer.findByPk(answerId);
-    if (!res.locals.authenticated) {
-      return res.render("edit-answer", { answer, csrfToken: req.csrfToken() });
-    } else {
-      res.redirect("/login");
-    }
+    return res.render("edit-answer", { answer, csrfToken: req.csrfToken() });
+    // if (!res.locals.authenticated) {
+    //   return res.render("edit-answer", { answer, csrfToken: req.csrfToken() });
+    // } else {
+    //   res.redirect("/");
+    // }
   })
 );
 
@@ -107,7 +108,7 @@ router.post(
     if (answer) {
       answer.value = value;
       await answer.save();
-      res.redirect(`/questions/${answer.questionId}`);
+      res.redirect("/");
     } else {
       next(questionNotFoundError(answerId));
     }
@@ -135,11 +136,16 @@ router.post(
 router.get("/:id/delete", csrfProtection, asyncHandler(async (req, res) => {
   const answerId = parseInt(req.params.id, 10);
   const answer = await db.Answer.findByPk(answerId);
-  res.render("delete-answer", {
-    title: "Delete answer",
-    answer,
-    csrfToken: req.csrfToken(),
-  })
+
+  if (!res.locals.authenticated) {
+    return res.render("delete-answer", {
+      title: "Delete answer",
+      answer,
+      csrfToken: req.csrfToken(),
+    })
+  } else {
+    res.redirect("/");
+  }
 }))
 
 module.exports = router;

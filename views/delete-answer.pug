@@ -1,11 +1,18 @@
-extends navbar.pug
+include utils.pug
+
+include navbar.pug
+
+append head
+
+  link(rel="stylesheet" href="/stylesheets/reset.css")
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
 
 block content
-    h1= answer.value
-    div
-        p Are you sure you want to delete this answer?
-    div
-        form(action=`/answers/${answer.id}/delete` method='post')
-            input(type='hidden' name='_csrf' value=csrfToken)
-            button(type='submit') Delete answer
-        a(href="/" role='button') Cancel
+  div.center-column
+    form.question-form(action=`/answers/${answer.id}/delete` method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      h2.delete= answer.value
+      div.buttons
+        button(type='submit') Delete answer
+        a(href=`/` role='button') Cancel

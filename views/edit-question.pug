@@ -1,17 +1,19 @@
 include utils.pug
 
-append head
-    script(src="/javascripts/demo.js" type="module" async defer)
-    link(rel="stylesheet" href="/stylesheets/reset.css")
-    link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
+include navbar.pug
 
-include navbar
+append head
+    //- script(src="/javascripts/demo.js" type="module" async defer)
+    link(rel="stylesheet" href="/stylesheets/reset.css")
+    link(rel="stylesheet" href="/stylesheets/index.css")
+    link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
 
 block content  
   +validationErrorSummary(errors)
-  form(action=`/questions/${question.id}/edit` method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field('Edit question', 'value', question.value, 'text', 'Question...')
-    div.buttons
-      button(type='submit') Update question
-      a(href=`/questions/${question.id}`) Cancel
+  div.center-column
+    form.question-form(action=`/questions/${question.id}/edit` method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +field('Edit question', 'value', question.value, 'text', 'Question...')
+      div.buttons
+        button(type='submit') Update question
+        a(href=`/`) Cancel

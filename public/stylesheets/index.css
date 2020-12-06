@@ -1,11 +1,31 @@
 body {
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(252, 153, 105),
-    rgb(238, 37, 138)
-  );
+  background-image: linear-gradient(to bottom right, #fc9969, #ee258a);
   height: 100vh;
 }
+
+/* div#background-gradient-1 {
+  background-image: linear-gradient(to bottom right, rgb(252, 154, 105), rgb(238, 37, 138));
+  width: 100vh;
+  height: 100vh;
+  display: block;
+  position: absolute;
+  z-index:-1;
+}
+
+div#background-gradient-2 {
+  background-image: linear-gradient(to bottom right, #466a8d, #352268);
+  width: 100vh;
+  height: 100vh;
+  display: block;
+  position: absolute;
+  z-index: -2;
+}
+
+div#button-gradient-1:hover {
+  transition: 1s;
+  background-image: linear-gradient(to bottom right, rgba(252, 154, 105, 0), rgba(238, 37, 138, 0);
+} */
+
 
 div.center-column {
   margin: auto;
@@ -72,4 +92,14 @@ span.user {
 
 button.add-answer {
   margin-top: 20px;
+}
+
+div#surprise-div {
+  /* background-color: blue; */
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
