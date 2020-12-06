@@ -25,9 +25,8 @@ block content
         div.user-answer
           span.user= question.User.email
           p.question-list= question.value
+          button(type='submit' class="add-answer" ) Add answer
           div(id="search-result")
             each answer in question.Answers
               p= answer.value
-              button(type='submit' class="add-answer" ) Add answer
-              a(href="/answers/1")
               //- NEED TO FIX LINE 32 ABOVE!!!!!!!
