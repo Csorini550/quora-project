@@ -21,7 +21,6 @@ block content
             button(type='submit' id="new-question" ) Submit question
             a(href='/' ) Cancel
     ul.questions-list
-      each question in questions
         div.user-answer
           span.user= question.User.email
           p.question-list= question.value

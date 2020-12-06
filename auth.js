@@ -33,6 +33,7 @@ const restoreUser = async (req, res, next) => {
 
 const logoutUser = (req, res) => {
   req.session.auth = null;
+  return res.redirect("/users/login");
 };
 
 const requireAuth = (req, res, next) => {

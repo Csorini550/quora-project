@@ -3,7 +3,7 @@ doctype html
 html
   head
     <script src="https://kit.fontawesome.com/6e38a041a3.js" crossorigin="anonymous"></script>
-    script(src="/javascripts/index.js")
+    script(src="/auth.js")
     title="Query"
     //link(rel="stylesheet" href="/stylesheets/reset.css")
     link(rel='stylesheet' href='/stylesheets/navbar.css')
@@ -14,17 +14,20 @@ html
       img(src="/images/query-logo.svg" class='navbar-logo')
       a(href='/') Home
         i(class="fas fa-home")
-      a(href='/users/question') Questions
+      a(href=`/personal/questions/1`) Questions
         i(class="far fa-question-circle")
-      a(href='/users/answer') Answers
+      //(href=`/personal/questions/${locals.user.id}`) Questions
+      a(href=`/personal/answers/1`) Answers
         i(class="fas fa-book")
+      //(href=`/personal/answers/${locals.user.id}`) Answers
       form(id='search-bar' action='/api/search')
         input.search-input(type='text' name='term' placeholder='Search for a question!')
-      div(class= 'dropdown') Where am i!!
-          button(onclick='logoutUser()' class='dropButton')
-          select(id="myDropdown" class="dropdown-content")
-            a(href='/users/login') Logout
-            a(href='/users/login/edit') Edit Personal info //route does not exist yet - hope to have it so the user can change password or email
-            a(href='/users/picture') Add user picture
-
+      div(class= 'dropdown') Logout
+          button(onClick='logoutUser()' class='dropButton')
+            <i class="fas fa-user-ninja"></i>
+            div(style='cursor:help') Logout
     block content
+          //- select(id="myDropdown" class="dropdown-content")
+          //-   a(href='/users/login') Logout
+          //-   a(href='/users/login/edit') Edit Personal info //route does not exist yet - hope to have it so the user can change password or email
+          //-   a(href='/users/picture') Add user picture

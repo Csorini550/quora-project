@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "Question",
     {
       value: {
-        type: DataTypes.STRING(500),
+        type: DataTypes.STRING(5000),
         allowNull: false,
       },
       userId: {

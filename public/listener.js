@@ -3,8 +3,7 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
     let clickCount = 0;
-    let answerDiv = document.querySelectorAll('.center-column-item');
-    let dropdownDiv = document.querySelector('.dropdown');
+    let answerDiv = document.querySelectorAll('.user-answer');
     answerDiv.forEach(answer => {
         answer.addEventListener('click', (event) => {
             clickCount += 1;
@@ -13,8 +12,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         })
     })
-    dropdownDiv.addEventListener('click', e => {
-        .classList.add(visible)
-    })
+    // dropdownDiv.addEventListener('click', e => {
+    //     .classList.add(visible)
+    // })
 
 })
