@@ -1,7 +1,5 @@
 # Query
 
-<img src="./images/query-logo.svg" align="center" alt="Query logo" width="300">
-<br>
 
 **Query** is a question and answer based app that allows users with questions to access people with answers. 
 Registered users submit content to the site, in the form of a question or an answer to someone elses question. Query's quest is to become the hub for a vast community of inquisitive humans from all over the globe.
