@@ -1,4 +1,4 @@
-extends navbar
+include navbar
 
 include utils
 
@@ -11,23 +11,24 @@ append head
   script(src="/javascripts/" type="module" defer)
   script(src="/javascript/public/listener.js" type="module") // might throw an error and need public/listener
 block content
-  form.question-form(action='/questions/new' method='post')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      +field('Ask a question', 'question', '', 'text', 'Question...')
-      div.buttons
-          button(type='submit' id="new-question" ) Submit question
-          a(href='/' ) Cancel
-  div(id="search-container")
-  h1 Search Results for "#{term}":
-  if searchQuestions.length
-    each question in searchQuestions
-      div(class="center-column-item" id="answer-question")
-          div.user-answer
-              span.user= question.User.email
-              h1= question.value
-              div(id="search-result")
-                each answer in question.Answers
-                  p= answer.value
-  else
-    div(class="center-column-item" id="no-results")
-      div(id="nope") No Results Found
+  div.center-column
+    form.question-form(action='/questions/new' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('Ask a question', 'question', '', 'text', 'Question...')
+        div.buttons
+            button(type='submit' id="new-question" ) Submit question
+            a(href='/' ) Cancel
+    div.user-answer
+        h2#search Search Results for "#{term}":
+        if searchQuestions.length
+            each question in searchQuestions
+                div(class="center-column-item" id="answer-question")
+                    span.user= question.User.email
+                    h2#search-result= question.value
+                    div(id="search-result")
+                      each answer in question.Answers
+                        p= answer.value
+        else
+          div(class="center-column-item" id="no-results")
+            div(id="nope")
+            p No Results Found
