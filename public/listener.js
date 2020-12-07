@@ -12,8 +12,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         })
     })
-    // dropdownDiv.addEventListener('click', e => {
-    //     .classList.add(visible)
-    // })
+    let newAnswerButton = document.querySelectorAll('.add-answer');
+    newAnswerButton.forEach((but) => {
+        but.addEventListener('click', e => {
+            e.preventDefault();
+
+            window.location = `/answers/${e.target.id}`
+            console.log(window);
+        })
+    })
 
 })

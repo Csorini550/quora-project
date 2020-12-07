@@ -82,7 +82,6 @@ router.post(
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res, next) => {
-    console.log("Why am i here")
     const { value } = req.body;
     const userId = res.locals.user.id;
     console.log(value);
@@ -92,7 +91,6 @@ router.post(
     });
 
     const validationErrors = validationResult(req);
-    console.log("PLEASE GOD")
     try {
       if (validationErrors.isEmpty()) {
         await question.save();
@@ -106,7 +104,6 @@ router.post(
         });
       }
     } catch (err) {
-      console.log("i was here!!!")
       if (
         err.name === "SequelizeValidationError" ||
         err.name === "SequelizeUniqueConstraintError"
@@ -167,14 +164,14 @@ router.get(
     const questionId = parseInt(req.params.id, 10);
     const question = await db.Question.findByPk(questionId);
 
-    if (!res.locals.authenticated) { //added !
-      return res.render("edit-question", { //made changes here added return
-        question,
-        csrfToken: req.csrfToken(),
-      });
-    } else {
-      res.redirect("/");
-    }
+    // if (!res.locals.authenticated) { //added !
+    return res.render("edit-question", { //made changes here added return
+      question,
+      csrfToken: req.csrfToken(),
+    });
+    // } else {
+    //   res.redirect("/");
+    // }
   })
 );
 
@@ -232,23 +229,8 @@ router.post(
 
 //******************************************************
 //************* Get Answer for Question ****************
+// : id(\\d +)
 
-router.get(
-  "/:id(\\d+)/answers/new",
-  csrfProtection,
-  asyncHandler(async (req, res) => {
-    if (res.locals.authenticated) {
-      const questionId = parseInt(req.params.id, 10);
-      const question = await db.Question.findByPk(questionId);
-      res.render("new-answer", {
-        question,
-        csrfToken: req.csrfToken(),
-      });
-    } else {
-      res.redirect("/users/login");
-    }
-  })
-);
 
 //******************************************************
 //************* Create Answer for Question ****************
