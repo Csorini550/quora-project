@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             e.preventDefault();
 
             window.location = `/answers/${e.target.id}`
-            console.log(window);
+
         })
     })
 

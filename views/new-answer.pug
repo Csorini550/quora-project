@@ -11,10 +11,11 @@ append head
 
 block content
     +validationErrorSummary(errors)
-    form(action='/answers/new' method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        input(type='hidden' name='questionId' value=question.id)
-        +field('Answer a question', 'value', '', 'text', 'Answer...')
-        div.buttons
-            button(type='submit' id="new-answer" ) Submit answer
-            a(href='/' ) Cancel
+    div.center-column
+        form.question-form(action='/answers/new' method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            input(type='hidden' name='questionId' value=question.id)
+            +field('Answer a question', 'value', '', 'text', 'Answer...')
+            div.buttons
+                button(type='submit' id="new-answer" ) Submit answer
+                a(href='/' ) Cancel
