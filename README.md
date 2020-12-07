@@ -21,6 +21,7 @@ Here is a working live demo: https://aa-querylite.herokuapp.com/users/login
 
 ## Landing Page
 
+![](public/images/LandingPage.png)
 
 
 ## User Authenication
@@ -45,6 +46,13 @@ Search
 
 
 ![](public/assets/searchFunction.gif)
+
+Logout
+
+![](public/assets/logout.gif)
+
+
+
 
 
 
