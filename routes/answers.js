@@ -54,7 +54,7 @@ router.post(
       questionId,
       userId: req.session.auth.userId
     });
-    console.log('here i am', value, questionId, req.session.auth.userId)
+    
     const validationErrors = validationResult(req);
     try {
       if (validationErrors.isEmpty()) {
