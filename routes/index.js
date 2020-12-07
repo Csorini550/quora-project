@@ -96,7 +96,7 @@ router.get(
     shortContent(questions);
     addQuestionLink(questions);
 
-    // console.log(questions);
+    
     res.render("index", { questions, csrfToken: req.csrfToken() });
     // res.json({ questions });
   })

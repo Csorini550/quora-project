@@ -84,7 +84,7 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { value } = req.body;
     const userId = res.locals.user.id;
-    console.log(value);
+    
     const question = db.Question.build({
       value,
       userId,
