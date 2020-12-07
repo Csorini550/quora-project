@@ -8,8 +8,8 @@ append head
   link(rel="stylesheet" href="/stylesheets/question-answer-forms.css")
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
-  script(src="/javascripts/" type="module" defer)
-  script(src="/javascript/public/listener.js" type="module") // might throw an error and need public/listener
+  script(src="/listener.js" type="module") // might throw an error and need public/listener
+  
 block content
   div.center-column
     form.question-form(action='/questions/new' method='post')
@@ -25,6 +25,7 @@ block content
                 div(class="center-column-item" id="answer-question")
                     span.user= question.User.email
                     h2#search-result= question.value
+                    button(type='submit' class="add-answer" id=`${question.id}`) Add answer
                     div(id="search-result")
                       each answer in question.Answers
                         p= answer.value
