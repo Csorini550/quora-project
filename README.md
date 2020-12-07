@@ -26,15 +26,25 @@ Here is a working live demo: https://aa-querylite.herokuapp.com/users/login
 ## User Authenication
 
 Login
-![](assets/images/Login.gif)
+
+
+![](public/assets/Login.gif)
 
 Register
+
+
+![](public/assets/register.gif)
 
 Create Question
 
 
+![](public/assets/AskQuestion.gif)
+
 
 Search
+
+
+![](public/assets/searchFunction.gif)
 
 
 
