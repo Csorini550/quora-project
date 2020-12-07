@@ -21,7 +21,7 @@ div.dropdown {
     rgb(252, 153, 105),
     rgb(238, 37, 138)
   ); */
-  background-color: rgba(55, 87, 127, 0.6);
+    background-color: rgba(55, 87, 127, 0.6);
     border: none;
     border-radius: 0;
 }

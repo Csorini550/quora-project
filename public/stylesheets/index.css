@@ -90,6 +90,19 @@ div.user-answer {
   margin: 10px auto;
 }
 
+div#search-container {
+  background-color: rgba(218, 253, 251, 0.9);
+  width: 700px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 7px rgba(32, 40, 80, 0.5);
+  color: rgb(55, 87, 127);
+  display: flex;
+  flex-flow: column;
+  font-size: 12px;
+  padding: 30px 50px;
+  margin: 10px auto;
+}
+
 textarea::-webkit-input-placeholder {
   color: rgba(55, 87, 127, 0.6);
   font-size: 25px;
@@ -103,6 +116,16 @@ h2 {
   font-size: 17px;
   font-weight: bold;
   padding: 0 0 4px 0;
+}
+
+h2#search {
+  margin: 0 0 20px 0;
+  border-bottom: 1px solid rgb(186, 223, 221);
+}
+
+h2#search-result{
+  font-size: 22px;
+  margin-top: 10px;
 }
 
 p {
