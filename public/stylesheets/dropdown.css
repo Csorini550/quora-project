@@ -16,11 +16,6 @@ div.dropdown {
 }
 
 .dropButton:hover {
-    /* background-image: linear-gradient(
-    to bottom right,
-    rgb(252, 153, 105),
-    rgb(238, 37, 138)
-  ); */
     background-color: rgba(55, 87, 127, 0.6);
     border: none;
     border-radius: 0;
@@ -32,50 +27,3 @@ div.dropdown {
     width: 40px;
     height: 40px;
 }
-
-/* .fa-user-ninja:hover {
-    background-color: rgb(244, 95, 155);
-} */
-
-
-/* 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9; 
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;  
-    display: block;
-}
-
-
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-
-.dropdown:hover .dropdown-content {
-  
-display: block;
-}
-
-
-.dropdown:hover .dropButton {
-  background-color: #3e8e41;
-} */
-
