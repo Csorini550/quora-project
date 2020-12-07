@@ -7,7 +7,6 @@ body {
 .nav {
 
     background-color: rgb(232, 255, 254);
-    /* border-bottom: 3px solid rgb(52, 65, 128); */
     box-shadow: 2px 2px 7px rgb(32, 40, 80, 0.5);
     overflow: hidden;
     display: flex;
@@ -35,7 +34,6 @@ body {
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
-    /* border: 7px solid rgb(240, 241, 241); */
 }
 
 .nav a:hover {
@@ -47,11 +45,6 @@ body {
     font-size: 20px;
     padding: 10px;
 }
-
-/* .nav a.active {
-    color: red;
-    background-color: hotpink;
-} */
 
 .navbar-logo {
     height: 30px;

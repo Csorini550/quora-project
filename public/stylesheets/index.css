@@ -1,31 +1,13 @@
 body {
-  background-image: linear-gradient(to bottom right, #fc9969, #ee258a);
+  background-image: linear-gradient(to bottom right, #fc9969, rgb(238, 37, 138));
   height: 100vh;
-}
-
-/* div#background-gradient-1 {
-  background-image: linear-gradient(to bottom right, rgb(252, 154, 105), rgb(238, 37, 138));
-  width: 100vh;
-  height: 100vh;
-  display: block;
-  position: absolute;
-  z-index:-1;
 }
 
 div#background-gradient-2 {
-  background-image: linear-gradient(to bottom right, #466a8d, #352268);
-  width: 100vh;
   height: 100vh;
-  display: block;
-  position: absolute;
-  z-index: -2;
+  transition: background-color 2s cubic-bezier(1, 1, 1, 1);
+	transition-delay: 0s;
 }
-
-div#button-gradient-1:hover {
-  transition: 1s;
-  background-image: linear-gradient(to bottom right, rgba(252, 154, 105, 0), rgba(238, 37, 138, 0);
-} */
-
 
 div.center-column {
   margin: auto;
@@ -57,6 +39,19 @@ div.user-answer {
   margin: 10px auto;
 }
 
+div#search-container {
+  background-color: rgba(218, 253, 251, 0.9);
+  width: 700px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 7px rgba(32, 40, 80, 0.5);
+  color: rgb(55, 87, 127);
+  display: flex;
+  flex-flow: column;
+  font-size: 12px;
+  padding: 30px 50px;
+  margin: 10px auto;
+}
+
 textarea::-webkit-input-placeholder {
   color: rgba(55, 87, 127, 0.6);
   font-size: 25px;
@@ -70,6 +65,16 @@ h2 {
   font-size: 17px;
   font-weight: bold;
   padding: 0 0 4px 0;
+}
+
+h2#search {
+  margin: 0 0 20px 0;
+  border-bottom: 1px solid rgb(186, 223, 221);
+}
+
+h2#search-result{
+  font-size: 22px;
+  margin-top: 10px;
 }
 
 p {
@@ -95,7 +100,6 @@ button.add-answer {
 }
 
 div#surprise-div {
-  /* background-color: blue; */
   width: 150px;
   height: 150px;
   cursor: pointer;
