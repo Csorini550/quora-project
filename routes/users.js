@@ -138,7 +138,6 @@ router.post(
         loginUser(req, res, user);
         return req.session.save((err) => {
           if (!err) {
-            console.log("No Error");
             return res.redirect("/");
           } else {
             console.log(err);
@@ -214,7 +213,6 @@ router.post(
           loginUser(req, res, user);
           return req.session.save((err) => {
             if (!err) {
-              console.log("no error");
               return res.redirect("/");
             } else {
               console.log(err);

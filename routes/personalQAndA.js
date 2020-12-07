@@ -84,8 +84,6 @@ router.get(
     //shortContent(questions);
     // addQuestionLink(questions);
 
-    // console.log(questions);
-
     res.render("questions", { questions, csrfToken: req.csrfToken() });
   })
 );
@@ -131,7 +129,7 @@ router.get(
     // shortContent(questions);
     // addQuestionLink(questions);
 
-    // console.log(questions);
+    
     // res.json({ newAnswers });
     res.render("answers", { answers, csrfToken: req.csrfToken() });
   })
