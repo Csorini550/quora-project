@@ -1,14 +1,14 @@
 # Query
 
-<img src="../images/query-logo.png" align="center" alt="Query logo" width="300 style="max-width:80%;">
-                                                                                                                                                                                                    
+ ![](query-logo.png)                                                                                                                                                                                               
 <br>
 **Query** is a question and answer based app that allows users with questions to access people with answers. 
 Registered users submit content to the site, in the form of a question or an answer to someone elses question. Query's quest is to become the hub for a vast community of inquisitive humans from all over the globe.
 
 # Demo
 
-Here is a working live demo: https://aa-querylite.herokuapp.com/
+Here is a working live demo: https://aa-querylite.herokuapp.com/users/login
+
 
 # Built With
 
