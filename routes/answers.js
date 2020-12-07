@@ -43,18 +43,64 @@ router.get(
 );
 
 //**************************
+router.post(
+  "/new",
+  csrfProtection,
+  answerValidators,
+  asyncHandler(async (req, res, next) => {
+    const { value, questionId } = req.body;
+    const answer = db.Answer.build({
+      value,
+      questionId,
+      userId: req.session.auth.userId
+    });
+    console.log('here i am', value, questionId, req.session.auth.userId)
+    const validationErrors = validationResult(req);
+    try {
+      if (validationErrors.isEmpty()) {
+        await answer.save();
+        res.redirect("/");
+      } else {
+        const errors = validationErrors.array().map((error) => error.msg);
+        res.render("new-answer", {
+          value,
+          errors,
+          csrfToken: req.csrfToken(),
+        });
+      }
+    } catch (err) {
+      if (
+        err.name === "SequelizeValidationError" ||
+        err.name === "SequelizeUniqueConstraintError"
+      ) {
+        const errors = err.error.map((error) => error.message);
+        res.render("new-answer", {
+          title: "New Answer",
+          question,
+          errors,
+          csrfToken: req.csrfToken(),
+        });
+      } else {
+        next(err);
+      }
+    }
+  })
+);
+
+
+
 
 router.get(
-  "/:id",
+  "/:questionid",
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res, next) => {
     const { value } = req.body;
-    const answerId = parseInt(req.params.id, 10);
+    const questionid = parseInt(req.params.questionid, 10);
 
-    const answer = await db.Answer.findByPk(answerId);
+    const question = await db.Question.findByPk(questionid);
     return res.render("new-answer", {
-      answer, csrfToken: req.csrfToken()
+      question, csrfToken: req.csrfToken()
     }); //************ NEEDS NEW PUG FILE!!!!! ******************
   })
 );
@@ -77,24 +123,6 @@ router.post(
     }
   })
 );
-
-// router.post('/:id/edit',
-//   csrfProtection,
-//   answerValidators,
-//   asyncHandler(async (req, res) => {
-//     const { value } = req.body;
-//     const answerId = parseInt(req.params.id, 10);
-//     const answerEdit = await db.Answer.findByPk(answerId);
-//     const answer = { value };
-//     await answerEdit.update(answer);
-//     res.render('edit-answer', {
-//       title: 'Edit answer',
-//       answer: { ...answer, id: answerId },
-//       csrfToken: req.csrfToken(),
-//     });
-//   })
-// );
-
 // ADD GET REQUEST FOR /:ID  *************************
 
 router.post(
@@ -137,15 +165,15 @@ router.get("/:id/delete", csrfProtection, asyncHandler(async (req, res) => {
   const answerId = parseInt(req.params.id, 10);
   const answer = await db.Answer.findByPk(answerId);
 
-  if (!res.locals.authenticated) {
-    return res.render("delete-answer", {
-      title: "Delete answer",
-      answer,
-      csrfToken: req.csrfToken(),
-    })
-  } else {
-    res.redirect("/");
-  }
+  // if (!res.locals.authenticated) {
+  return res.render("delete-answer", {
+    title: "Delete answer",
+    answer,
+    csrfToken: req.csrfToken(),
+  })
+  // } else {
+  //   res.redirect("/");
+  // }
 }))
 
 module.exports = router;
