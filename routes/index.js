@@ -19,11 +19,6 @@ const requireAuth = (req, res, next) => {
 };
 
 
-/* GET home page. */
-// router.get('/', function (req, res, next) {
-//   res.render('index', { questions: [], title: 'a/A Express Skeleton Home' });
-
-// });
 
 
 //Helper Functions
@@ -96,7 +91,7 @@ router.get(
     shortContent(questions);
     addQuestionLink(questions);
 
-    
+
     res.render("index", { questions, csrfToken: req.csrfToken() });
     // res.json({ questions });
   })
